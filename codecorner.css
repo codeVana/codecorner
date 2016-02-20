@@ -3,6 +3,10 @@ body {
     /*padding: 60px;*/
 }
 
+.header {
+	color: #fff;
+}
+
 nav {
   height: 100px;
 }
