@@ -313,7 +313,7 @@ if (Meteor.isServer) {
      		createdOn:new Date()
      	});
      	 Corner.insert({
-     		title:"Girl Starter",
+     		title:"Girl Start",
      		url:"http://www.girlstart.org",
         img:"http://www.girlstart.org/images/stories/gsPhotos/photo_1.jpg",
         category:"Science",
