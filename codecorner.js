@@ -1,7 +1,7 @@
 Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
 Corner = new Mongo.Collection("instructables")
-//Posts = new Mongo.Collection("posts");
+Posts = new Mongo.Collection("posts");
 
 if (Meteor.isClient) {
   Accounts.ui.config({
