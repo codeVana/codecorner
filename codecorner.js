@@ -124,7 +124,7 @@ if (Meteor.isServer) {
   
   Rooms.deny({
     insert: function (userId, doc) {
-      return true;
+      return (userId === null);
     },
     update: function (userId, doc, fieldNames, modifier) {
       return true;
