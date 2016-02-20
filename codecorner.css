@@ -1,6 +1,10 @@
 /* CSS declarations go here */
 body {
-    padding: 60px;
+    /*padding: 60px;*/
+}
+
+nav {
+  height: 100px;
 }
 
 .card {
