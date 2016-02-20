@@ -1,19 +1,19 @@
 Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
-Instructables = new Mongo.Collection("instructables")
+Corner = new Mongo.Collection("instructables")
 
 if (Meteor.isClient) {
   Accounts.ui.config({
     passwordSignupFields: 'USERNAME_ONLY'
   });
-
+  Meteor.subscribe("corner");
   Router.configure({
     layoutTemplate: 'ApplicationLayout'
   	});
 
   	Router.route('/', function () {
     	this.render('welcome', {
-      	to:"main"
+      	to:"splash"
     	});
   	});
 
@@ -21,8 +21,11 @@ if (Meteor.isClient) {
       this.render('navbar', {
         to:"navbar"
       });
-      this.render('codecorner', {
-        to:"main"
+      this.render('codecornersplash', {
+        to:"splash",
+      });
+      this.render('codecorner_list', {
+        to:"chat"
       });
     });
 
@@ -30,34 +33,82 @@ if (Meteor.isClient) {
     	this.render('navbar', {
       	to:"navbar"
     	});
-    	this.render('codecorner', {
-      	to:"main"
+    	this.render('codecornersplash', {
+      	to:"splash"
     	});
       this.render('chatwindow', {
         to: "chat"
       });
   	});
-  // counter starts at 0
-  Session.setDefault('counter', 0);
 
-  Template.codecorner.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
+    Router.route('/codecorner/:_id', function () {
+      this.render('navbar', {
+        to:"navbar"
+      });
+      this.render('codecornersplash', {
+      	to:"splash"
+    	});
+      this.render('codecorner_item_details', {
+        to:"main",
+        data:function(){
+          return Corner.findOne({_id:this.params._id});
+        }
+      });
+      this.render('chatwindow', {
+        to: "chat"
+      });
+    });
 
-  Template.codecorner.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
+  Template.codecornersplash.rendered = function() {
+    $('.parallax').parallax();
+  };
+
+  Template.codecorner_item_details.rendered = function() {
+    $('.carousel').carousel();
+  };
+
+  Template.codecorner_list.helpers({
+		codecorners:function(){
+			return Corner.find({}, {sort: {upscore: -1}});
+		}
+	});
+
+  Template.codecorner_item.helpers({
+		momentdate: function() {
+			var website_id = this._id;
+	    var corner = Corner.findOne({_id:website_id});
+			console.log(moment(website.createdOn).format());
+			return moment(corner.createdOn).format("dddd, MMMM Do YYYY, h:mm:ss a");
+		}
+	});
+	/////
+	// template events
+	/////
+
+	Template.codecorner_item.events({
+		"click .js-upvote":function(event){
+			// example of how you can access the id for the website in the database
+			// (this is the data context for the template)
+			var website_id = this._id;
+			Meteor.call("addUpVote", website_id);
+			return false;// prevent the button from reloading the page
+		},
+		"click .js-downvote":function(event){
+
+			// example of how you can access the id for the website in the database
+			// (this is the data context for the template)
+			var website_id = this._id;
+			Meteor.call("addDownVote", website_id);
+			return false;// prevent the button from reloading the page
+		}
+	});
+
 
   Meteor.subscribe("rooms");
   Meteor.subscribe("messages");
 
   Session.setDefault("roomname", "Default");
-  
+
   Template.rooms.events({
 	'click .createRoom': function(e) {
 	   _createRoom();
@@ -131,24 +182,94 @@ if (Meteor.isClient) {
       return Meteor.release;
     }
   });
-
+/*
   Template.roominput.events({
     'click .createRoom': function(e) {
        _createRoom();
     }
   });
-
+*/
   _createRoom = function() {
     var el = document.getElementById("room-name");
     Rooms.insert(el.value);
     el.value = "";
     el.focus();
   };
-
 }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
+    Meteor.methods({
+  		addCorner: function(title, url, description, img, video) {
+  			if (! Meteor.userId()) {
+  	 		throw new Meteor.Error("not-authorized");
+   			}
+  			Corner.insert({
+  			title:title,
+  			url:url,
+        img:img,
+        video:video,
+  			description:description,
+  			owner: Meteor.userId(),
+        username: Meteor.user().username,
+  			downscore: 0,upscore: 0,
+  			createdOn:new Date()
+  		  });
+  		},
+  		addUpVote: function(corner_id) {
+  			Corner.update(corner_id, {$inc: {upscore: 1}});
+  		},
+  		addDownVote: function(corner_id) {
+  			Corner.update(corner_id, {$inc: {downscore: 1}});
+  		}
+  	});
+  	 Meteor.publish("corner", function() {
+  	    return Corner.find();
+  	 });
+
+     if (!Corner.findOne()){
+     	console.log("No Code Corners yet. Creating starter data.");
+     	  Corner.insert({
+     		title:"Chick Tech",
+     		url:"http://www.chicktech.org",
+        img:"https://pbs.twimg.com/profile_images/2266463001/bntsgwxu124en7h8pmhz_400x400.jpeg",
+        category:"Tech",
+     		description:"ChickTech is dedicated to retaining women in the technology workforce and increasing the number of women and girls pursuing technology-based careers",
+ 				downscore: 0,upscore: 0,
+     		createdOn:new Date()
+     	});
+     	 Corner.insert({
+     		title:"Games for Girls",
+     		url:"http://girlsmakegames.com",
+        img:"https://fortunedotcom.files.wordpress.com/2015/07/alexa-cafe.jpg?quality=80&w=840&h=485&crop=1",
+        category:"Art",
+     		description:"Girls Make Games is a series of international summer camps, workshops and game jams designed to inspire the next generation of designers, creators, and engineers.",
+ 				downscore: 0, upscore: 0,
+     		createdOn:new Date()
+     	});
+     	 Corner.insert({
+     		title:"Girl Starter",
+     		url:"http://www.girlstart.org",
+        img:"http://www.girlstart.org/images/stories/gsPhotos/photo_1.jpg",
+        category:"Science",
+     		description:"Girlstart's mission is to increase girls’ interest and engagement in STEM through innovative, nationally-recognized informal STEM education programs.",
+ 				upscore: 0,
+ 				downscore: 0,
+     		createdOn:new Date()
+     	});
+      Corner.insert({
+        title:"Apps for Girls",
+        url:"http://www.appinventor.org",
+        img:"http://c8.alamy.com/comp/CYXW7E/girls-at-a-technocamp-app-inventor-workshop-for-16-18-year-old-students-CYXW7E.jpg",
+        category:"Tech",
+        description: "AppInventor.org is a site for learning and teaching how to program mobile apps with MIT's App Inventor. These tutorials are refined versions of the tutorials that have been on the Google and MIT App Inventor sites from App Inventor's inception-- thousands of beginners have used them to learn programming and learn App Inventor.",
+        upscore: 0,
+        downscore: 0,
+        createdOn: new Date()
+      });
+    }
+
+
     if (Rooms.find().count() === 0) {
 	  // Create the default rooms when none are set up.
       ["Default"].forEach(function(r) {

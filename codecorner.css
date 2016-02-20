@@ -7,6 +7,9 @@ nav {
   height: 100px;
 }
 
+#index-banner h1{
+  color: white
+}
 .card {
 	width: 22%;
 	float: left;

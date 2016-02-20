@@ -7,6 +7,7 @@
 
 <template name="ApplicationLayout">
   {{> yield "navbar"}}
+  {{> yield "splash"}}
   {{> yield "main"}}
   {{> yield "chat"}}
 </template>
@@ -33,8 +34,141 @@
   </div>
 </template>
 
-<template name="codecorner">
+<template name="codecornersplash">
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center text-lighten-2">Code Corner</h1>
+        <div class="row center">
+          <h5 class="header col s12">Instructables for Code</h5>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax"><img src="http://lorempixel.com/580/250/technics/4" alt="Unsplashed background img 1"></div>
+  </div>
+</template>
 
+<template name="codecornersplashslider">
+  <div class="slider">
+    <ul class="slides">
+      <li>
+        <img alt="Testit" src="http://lorempixel.com/580/250/technics/1"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://lorempixel.com/580/250/technics/2"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>Left Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<template name="codecorner_list">
+	<ol>
+	{{#each codecorners}}
+	{{>codecorner_item}}
+	{{/each}}
+	</ol>
+</template>
+
+<template name="codecorner_item">
+  <div class="col s12 m12">
+    <div class="card small">
+      <div class="card-image">
+        <span class="card-title">{{title}}</span>
+      </div>
+      <div class="card-content">
+        <h5> <a href="/codecorner/{{_id}}">{{title}}</a> </h5>
+      <ul>
+        <li> <span class="website_item_score"> UpScore: {{upscore}} </span> </li>
+        <li> <span class="website_item_score"> DownScore: {{downscore}} </span></li>
+      </ul>
+      <a href="#" class="btn btn-default js-upvote">
+        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+      </a>
+      <a href="#" class="btn btn-default js-downvote">
+        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+      </a>
+      </div>
+      <div class="card-action">
+        <a href="/codecorner/{{_id}}">{{title}}</a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="codecorner_item_details">
+  <div class="carousel">
+   <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/800/400/food/1"></a>
+   <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/800/400/food/2"></a>
+   <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/800/400/food/3"></a>
+   <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/800/400/food/4"></a>
+ </div>
+ <ul class="collection">
+   <li class="collection-item avatar">
+     <img src="images/yuna.jpg" alt="" class="circle">
+     <span class="title">{{title}}</span>
+     <p>{{description}}
+     </p>
+     <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+   </li>
+   <li class="collection-item avatar">
+     <i class="material-icons circle">folder</i>
+     <span class="title">Title</span>
+     <p> Code goes here
+     </p>
+     <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+   </li>
+
+   <li class="collection-item avatar">
+     <i class="material-icons circle red">play_arrow</i>
+     <span class="title">Title</span>
+     <p> Video goes here
+     </p>
+     <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+   </li>
+ </ul>
+
+  <div class="row">
+        <div class="col s12 m7">
+          <div class="card blue-grey large">
+            <div class="card-content white-text">
+              <h3> <span class="website_item_details_title"> {{title}} </span> </h3>
+              <p> <span class="website_item_details_description"> {{description}} </span>
+              </p>
+            </div>
+            <div class="card-action">
+ <a href="{{url}}">Visit the Site for More Details </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</template>
+
+<template name="codecorner">
 <div class="row">
 <div class="col s12 m12">
   <div class="card small">
