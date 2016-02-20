@@ -1,7 +1,7 @@
 Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
 Corner = new Mongo.Collection("instructables")
-Posts = new Mongo.Collection("posts");
+//Posts = new Mongo.Collection("posts");
 
 if (Meteor.isClient) {
   Accounts.ui.config({
@@ -244,12 +244,18 @@ if (Meteor.isClient) {
     'submit .new-post': function(event, template) {
         event.preventDefault();
         var title = event.target.title.value;
-        var text = $('.summernote').summernote('code');
-        Posts.insert({
-          title: title,
-          text: text,
-          createdAt: new Date()
-        });
+        var description = $('.summernote').summernote('code');
+        Corner.insert({
+  			title:title,
+//  			url:url,
+        img:"https://pbs.twimg.com/profile_images/2266463001/bntsgwxu124en7h8pmhz_400x400.jpeg",
+//        video:video,
+  			description:description,
+  			owner: Meteor.userId(),
+        username: Meteor.user().username,
+  			downscore: 0,upscore: 0,
+  			createdOn:new Date()
+  		  });
         Router.go('/codecorner');
     }
   });
