@@ -20,5 +20,6 @@ insecure                # Allow all DB writes from clients (for prototyping)
 accounts-password
 bootstrap
 accounts-ui
-materialize:materialize
 iron:router
+materialize:materialize
+summernote:summernote
