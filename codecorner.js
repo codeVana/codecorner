@@ -1,6 +1,7 @@
 Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
 Corner = new Mongo.Collection("instructables")
+Posts = new Mongo.Collection("posts");
 
 if (Meteor.isClient) {
   Accounts.ui.config({
@@ -195,7 +196,71 @@ if (Meteor.isClient) {
     el.value = "";
     el.focus();
   };
+  Meteor.subscribe("posts");
+
+
+  Router.route('/posts', function () {
+    this.render('navbar', {
+      to:"navbar"
+    });
+    this.render('codecornersplash', {
+      to:"splash"
+    });
+    this.render('welcomepost', {
+      to:"main"
+    });
+  });
+
+  Router.route('/post', function () {
+    this.render('postList');
+  });
+
+
+
+
+  Session.setDefault('counter', 0);
+
+
+  Template.welcome.helpers({
+    posts: function() {
+      return Posts.find();
+    },
+    length: function() {
+      return Posts.find().count();
+    }
+  });
+
+  Template.postList.helpers({
+    counter: function () {
+      return Session.get('counter');
+    },
+    posts: function () {
+      return Posts.find();
+    }
+  });
+
+   Template.postList.events({
+    'submit .new-post': function(event, template) {
+        event.preventDefault();
+        var title = event.target.title.value;
+        var text = $('.summernote').summernote('code');
+        Posts.insert({
+          title: title,
+          text: text,
+          createdAt: new Date()
+        });
+    }
+  });
+
+   Template.postList.rendered = function () {
+    $('.summernote').summernote({
+      height: 200
+    });
+  };
 }
+
+
+
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
@@ -248,7 +313,7 @@ if (Meteor.isServer) {
      		createdOn:new Date()
      	});
      	 Corner.insert({
-     		title:"Girl Starter",
+     		title:"Girl Start",
      		url:"http://www.girlstart.org",
         img:"http://www.girlstart.org/images/stories/gsPhotos/photo_1.jpg",
         category:"Science",
@@ -316,5 +381,11 @@ if (Meteor.isServer) {
   });
   Meteor.publish("messages", function () {
     return Messages.find({}, {sort: {ts: -1}});
+
+
+  });
+
+  Meteor.publish("posts", function () {
+    return Posts.find({});
   });
 }

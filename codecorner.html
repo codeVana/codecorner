@@ -359,3 +359,41 @@
 <template name="room">
     <li style="cursor: pointer; {{roomstyle}}">{{roomname}}</li>
 </template>
+
+<template name="welcomepost">
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Code Corner</h1>
+    </div>
+    <h2>{{length}}</h2>
+    <ul>
+
+      {{#each posts}}
+      <li>
+        Title: {{ title }}
+        </li>
+      {{/each}}
+
+    </ul>
+  </div>
+
+</template>
+
+<template name="postList">
+ <div class="container">
+  <h3>submit to codecorner</h3>
+<h2> {{{submitted}}} </h2>
+  <form class="new-post">
+  <div class="row">
+  <div class="input-field col s12">
+          <input id="title" type="text">
+          <label for="title">Title</label>
+   </div>
+   </div>
+  <div class="summernote">
+  </div>
+    <button class="btn waves-effect waves-light">Submit
+  	</button>
+  	</form>
+  </div>
+</template>
