@@ -26,7 +26,7 @@ if (Meteor.isClient) {
         to:"splash",
       });
       this.render('codecorner_list', {
-        to:"chat"
+        to:"main"
       });
     });
 
@@ -209,8 +209,8 @@ if (Meteor.isClient) {
   });
 
   Router.route('/post', function () {
-    this.render('navbar', { to: "navbar" })
-    this.render('postList');
+    this.render('navbar', { to: "navbar" });
+    this.render('postList', { to: "main" });
   });
 
 
