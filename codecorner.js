@@ -1,11 +1,42 @@
 Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
+Instructables = new Mongo.Collection("instructables")
 
 if (Meteor.isClient) {
   Accounts.ui.config({
     passwordSignupFields: 'USERNAME_ONLY'
   });
 
+  Router.configure({
+    layoutTemplate: 'ApplicationLayout'
+  	});
+
+  	Router.route('/', function () {
+    	this.render('welcome', {
+      	to:"main"
+    	});
+  	});
+
+    Router.route('/codecorner/', function () {
+      this.render('navbar', {
+        to:"navbar"
+      });
+      this.render('codecorner', {
+        to:"main"
+      });
+    });
+
+  	Router.route('/codecorner/chat', function () {
+    	this.render('navbar', {
+      	to:"navbar"
+    	});
+    	this.render('codecorner', {
+      	to:"main"
+    	});
+      this.render('chatwindow', {
+        to: "chat"
+      });
+  	});
   // counter starts at 0
   Session.setDefault('counter', 0);
 
@@ -25,7 +56,7 @@ if (Meteor.isClient) {
   Meteor.subscribe("rooms");
   Meteor.subscribe("messages");
   Session.setDefault("roomname", "Meteor");
-  
+
   Template.rooms.events({
 	'click .createRoom': function(e) {
 	   _createRoom();
@@ -49,7 +80,7 @@ if (Meteor.isClient) {
     el.value = "";
     el.focus();
   };
-  
+
   _createRoom = function() {
     var el = document.getElementById("newroom");
 	Rooms.insert({roomname: el.value});
@@ -65,7 +96,7 @@ if (Meteor.isClient) {
       return Session.get("roomname");
     }
   });
-  
+
   Template.message.helpers({
     timestamp: function() {
       return this.ts.toLocaleString();
@@ -77,20 +108,23 @@ if (Meteor.isClient) {
       Session.set("roomname", e.target.innerText);
     }
   });
-  
+
   Template.rooms.helpers({
     rooms: function() {
       return Rooms.find();
     }
   });
-  
+
   Template.room.helpers({
 	roomstyle: function() {
       return Session.equals("roomname", this.roomname) ? "font-weight: bold" : "";
     }
   });
 
-  Template.chat.helpers({
+  Template.chatwindow.helpers({
+    currentUser: function() {
+      return Meteor.userId();
+    },
     release: function() {
       return Meteor.release;
     }
@@ -106,7 +140,7 @@ if (Meteor.isServer) {
       });
     }
   });
-  
+
   Rooms.deny({
     insert: function (userId, doc) {
       return true;
@@ -139,7 +173,7 @@ if (Meteor.isServer) {
       return (userId !== null);
     }
   });
-  
+
   Meteor.publish("rooms", function () {
     return Rooms.find();
   });

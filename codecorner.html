@@ -3,21 +3,46 @@
 </head>
 
 <body>
-  <div name="container">
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <a class="brand" href="#">CodeCorner</a>
-                <ul class="nav">
-                    <li><a href="https://github.com/codeVana/codecorner" target="_blank">Source</a></li>
-                </ul>
-                <ul class="nav pull-right">
-                    <li><a>{{> loginButtons align="right"}}</a></li>
-                </ul>
-            </div>
-        </div>
+</body>
 
+<template name="ApplicationLayout">
+  {{> yield "navbar"}}
+  {{> yield "main"}}
+  {{> yield "chat"}}
+</template>
+
+
+<template name="navbar">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">Code Corner</a>
+      <ul class="nav">
+          <li><a href="https://github.com/codeVana/codecorner" target="_blank">Source</a></li>
+      </ul>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="#">{{> loginButtons}}</a></li>
+      </ul>
+    </div>
+  </nav>
+</template>
+
+<template name="welcome">
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Welcome to Code Corner {{username}}!</h1>
+      <a href="/codecorner" class="btn btn-info">ENTER</a>
+    </div>
+  </div>
+</template>
+
+<template name="codecorner">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="chatwindow">
+    <div class="container">
   {{#if currentUser}}
-    {{> codecorner}}
     {{> chat}}
   {{else}}
     <div class="hero-unit">
@@ -27,12 +52,8 @@
   {{/if}}
 
   </div>
-</body>
-
-<template name="codecorner">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
 </template>
+
 
 <template name="chat">
         <div class="row-fluid">
