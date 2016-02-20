@@ -15,7 +15,7 @@ nav {
   color: white
 }
 
-.card {
+.main-cardlist .card {
 	width: 22%;
 	float: left;
 	margin-left: 1%;
@@ -23,7 +23,7 @@ nav {
 	margin-bottom: 20px;
 }
 
-.card.small .card-content {
+.main-cardlist .card.small .card-content {
 	padding: 12px;
 }
 
