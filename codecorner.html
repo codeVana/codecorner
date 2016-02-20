@@ -21,6 +21,9 @@
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="#" class="color-primary-1">{{> loginButtons}}</a></li>
         <li><a href="https://github.com/codeVana/codecorner" target="_blank">Source</a></li>
+        {{#if currentUser}}
+        <li><a href="/post" class="post-link">Post</a></li>
+        {{/if}}
       </ul>
     </div>
   </nav>
@@ -362,21 +365,12 @@
 
 <template name="welcomepost">
   <div class="container">
-    <div class="jumbotron">
-      <h1>Code Corner</h1>
-    </div>
-    <h2>{{length}}</h2>
     <ul>
-
       {{#each posts}}
-      <li>
-        Title: {{ title }}
-        </li>
+      <li>{{ title }}</li>
       {{/each}}
-
     </ul>
   </div>
-
 </template>
 
 <template name="postList">

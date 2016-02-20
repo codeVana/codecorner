@@ -203,15 +203,13 @@ if (Meteor.isClient) {
     this.render('navbar', {
       to:"navbar"
     });
-    this.render('codecornersplash', {
-      to:"splash"
-    });
     this.render('welcomepost', {
       to:"main"
     });
   });
 
   Router.route('/post', function () {
+    this.render('navbar', { to: "navbar" })
     this.render('postList');
   });
 
@@ -221,13 +219,10 @@ if (Meteor.isClient) {
   Session.setDefault('counter', 0);
 
 
-  Template.welcome.helpers({
+  Template.welcomepost.helpers({
     posts: function() {
       return Posts.find();
     },
-    length: function() {
-      return Posts.find().count();
-    }
   });
 
   Template.postList.helpers({
@@ -249,6 +244,7 @@ if (Meteor.isClient) {
           text: text,
           createdAt: new Date()
         });
+        Router.go('/codecorner');
     }
   });
 
