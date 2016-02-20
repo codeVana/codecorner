@@ -295,6 +295,7 @@ if (Meteor.isServer) {
      if (!Corner.findOne()){
      	console.log("No Code Corners yet. Creating starter data.");
      	  Corner.insert({
+          nextChat: '12:00 PT',
      		title:"Chick Tech",
      		url:"http://www.chicktech.org",
         img:"https://pbs.twimg.com/profile_images/2266463001/bntsgwxu124en7h8pmhz_400x400.jpeg",
@@ -304,6 +305,7 @@ if (Meteor.isServer) {
      		createdOn:new Date()
      	});
      	 Corner.insert({
+        nextChat: '12:05 PT',
      		title:"Games for Girls",
      		url:"http://girlsmakegames.com",
         img:"https://fortunedotcom.files.wordpress.com/2015/07/alexa-cafe.jpg?quality=80&w=840&h=485&crop=1",
@@ -313,6 +315,7 @@ if (Meteor.isServer) {
      		createdOn:new Date()
      	});
      	 Corner.insert({
+        nextChat: 'Not available',
      		title:"Girl Start",
      		url:"http://www.girlstart.org",
         img:"http://www.girlstart.org/images/stories/gsPhotos/photo_1.jpg",
@@ -323,6 +326,7 @@ if (Meteor.isServer) {
      		createdOn:new Date()
      	});
       Corner.insert({
+        nextChat: 'Not available',
         title:"Apps for Girls",
         url:"http://www.appinventor.org",
         img:"http://c8.alamy.com/comp/CYXW7E/girls-at-a-technocamp-app-inventor-workshop-for-16-18-year-old-students-CYXW7E.jpg",
