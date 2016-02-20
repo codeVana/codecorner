@@ -40,9 +40,13 @@ if (Meteor.isClient) {
   });
 
    Template.post.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
+    'submit .new-post': function(event) {
+        event.preventDefault();
+        var title = event.target.title.value;
+        console.log(event.target.summernote)
+        var text = event.target.summernote.code;
+        console.log(title);
+        console.log(text);
     }
   });
 
