@@ -1,23 +1,55 @@
-if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
+Topics = new Mongo.Collection("topics");
 
-  Template.codecorner.helpers({
-    counter: function () {
-      return Session.get('counter');
+Meteor.methods({
+  postTopic: function (topicText) {
+    /* add authentication here */
+if (! Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
     }
-  });
+    
+    Topics.insert({
+      topicText: topicText,
+      createdAt: new Date(),
+      username: Meteor.user().username
+    });
+  }
+});
 
-  Template.codecorner.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
+if (Meteor.isServer) {
+  // This code only runs on the server
+  Meteor.publish("topics", function () {
+    return Topics.find({}, {sort: {createdAt: -1}, limit: 5});
   });
 }
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
+/* scrolling code */
+
+if (Meteor.isClient) {
+  // This code only runs on the client
+  Meteor.subscribe("topics");
+
+  Template.body.helpers({
+    recentTopics: function () {
+      return Topics.find({}, {sort: {createdAt: 1}});
+    },
+  });
+
+  /*events*/
+  Template.body.events({
+    "submit .new-topic": function (event) {
+      var text = event.target.text.value;
+
+      Meteor.call("postTopic", text);
+
+      event.target.text.value = "";
+      event.preventDefault();
+    },
+  });
+
+
+  /*account config*/
+   /*account config*/
+  Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
   });
 }

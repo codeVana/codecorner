@@ -3,12 +3,30 @@
 </head>
 
 <body>
-  <h1>Welcome to Code Corner!</h1>
-
-  {{> codecorner}}
+  <div class="container">
+    <header>
+     <h1>Welcome to Code Corner!</h1>
+     {{> loginButtons}}
+    </header>
+    <ul class="topic-window">
+      {{#each recentTopics}}
+        {{> topic}}
+      {{/each}}
+    </ul>
+    <!-- more-topics button -->
+    <footer>
+    	{{#if currentUser}}
+          <form class="new-topic">
+          	<input type="text" name="text" placeholder="Add a topic" autocomplete="off"/>
+          </form>
+	    {{/if}}       
+    </footer>
+  </div>
 </body>
 
-<template name="codecorner">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="topic">
+  <li class="topic">
+    <div class="username">{{username}}</div>
+    <div class="topic-text">{{topicText}}</div>
+  </li>
 </template>
