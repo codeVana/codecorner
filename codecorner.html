@@ -1,14 +1,72 @@
 <head>
   <title>codecorner</title>
+  <!-- Compiled and minified CSS -->
 </head>
 
 <body>
-  <h1>Welcome to Code Corner!</h1>
-
-  {{> codecorner}}
+	
 </body>
 
+
 <template name="codecorner">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+	<div class="container">
+        <!-- Page Content goes here -->
+  		{{> yield "navbar"}}
+  		{{> yield "main"}}
+    </div>
 </template>
+
+<template name="welcome">
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Welcome to Code Corner!</h1>
+    </div>
+  </div>
+</template>
+
+<template name="post">
+  <h3>submit to codecorner</h3>
+
+  <div class="input-field col s12">
+          <input id="title" type="text">
+          <label for="title">Title</label>
+   </div>
+  <div class="container summernote">
+    <!--<div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="title" type="text">
+          <label for="title">Title</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="text" type="text">
+          <label for="text">Text</label>
+        </div>
+      </div>
+    </form>
+  </div>-->
+  		<div id="summernote">
+  			Hello Summernote
+  		</div>
+  </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+  </button>
+</template>
+
+
+<template name="navbar">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">code corner</a>
+    </div>
+  </nav>
+</template>
+
+<template name="main">
+  <div class="container">
+    This is the main template
+  </div>
+</template>
+
+
