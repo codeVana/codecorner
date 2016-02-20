@@ -25,6 +25,12 @@ if (Meteor.isClient) {
   Meteor.subscribe("rooms");
   Meteor.subscribe("messages");
   Session.setDefault("roomname", "Meteor");
+  
+  Template.rooms.events({
+	'click .createRoom': function(e) {
+	   _createRoom();
+	}
+  });
 
   Template.input.events({
     'click .sendMsg': function(e) {
@@ -41,6 +47,13 @@ if (Meteor.isClient) {
   _sendMessage = function() {
     var el = document.getElementById("msg");
     Messages.insert({user: Meteor.user().username, msg: el.value, ts: new Date(), room: Session.get("roomname")});
+    el.value = "";
+    el.focus();
+  };
+  
+  _createRoom = function() {
+    var el = document.getElementById("newroom");
+	Rooms.insert({roomname: el.value});
     el.value = "";
     el.focus();
   };
@@ -101,10 +114,9 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    Messages.remove({});
-    Rooms.remove({});
     if (Rooms.find().count() === 0) {
-      ["Meteor", "JavaScript", "Reactive", "MongoDB"].forEach(function(r) {
+	  // Create the default rooms when none are set up.
+      ["Default"].forEach(function(r) {
         Rooms.insert({roomname: r});
       });
     }
@@ -119,6 +131,11 @@ if (Meteor.isServer) {
     },
     remove: function (userId, doc) {
       return true;
+    }
+  });
+  Rooms.allow({
+    insert: function (userId, doc) {
+      return (userId !== null);
     }
   });
   Messages.deny({
