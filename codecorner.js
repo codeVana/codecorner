@@ -220,7 +220,7 @@ if (Meteor.isClient) {
 
   Template.codecorner_item.helpers({
     nextChatEmpty: function() {
-      return !this.nextChat || this.nextChat == '';
+      return !this.nextChat || this.nextChat == 'Not available';
     }
   });
 
