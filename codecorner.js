@@ -101,7 +101,7 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     if (Rooms.find().count() === 0) {
 	  // Create the default rooms when none are set up.
-      ["Meteor", "JavaScript", "Reactive", "MongoDB"].forEach(function(r) {
+      ["Default"].forEach(function(r) {
         Rooms.insert({roomname: r});
       });
     }
