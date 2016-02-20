@@ -46,7 +46,7 @@ if (Meteor.isClient) {
       this.render('navbar', {
         to:"navbar"
       });
-      this.render('codecornersplash', {
+      this.render('', {
       	to:"splash"
     	});
       this.render('codecorner_item_details', {
