@@ -2,3 +2,15 @@
 body {
     padding: 60px;
 }
+
+.card {
+	width: 22%;
+	float: left;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-bottom: 20px;
+}
+
+.card .card-content p {
+	margin-bottom: 1em;
+}
