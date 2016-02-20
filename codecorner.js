@@ -1,5 +1,6 @@
+Posts = new Mongo.Collection("posts");
+
 if (Meteor.isClient) {
-  // counter starts at 0
 
 
   Router.configure({
@@ -44,9 +45,12 @@ if (Meteor.isClient) {
         event.preventDefault();
         var title = event.target.title.value;
         var text = $('.summernote').summernote('code');
-        template.submitted = text;
-        console.log(title);
-        console.log(text);
+        Posts.insert({
+          title: title,
+          text: text,
+          createdAt: new Date()
+        });
+        console.log("we out here");
     }
   });
 
