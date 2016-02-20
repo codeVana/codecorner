@@ -24,7 +24,7 @@ if (Meteor.isClient) {
 
   Meteor.subscribe("rooms");
   Meteor.subscribe("messages");
-  Session.setDefault("roomname", "Meteor");
+  Session.setDefault("roomname", "Default");
   
   Template.rooms.events({
 	'click .createRoom': function(e) {
@@ -53,7 +53,7 @@ if (Meteor.isClient) {
   
   _createRoom = function() {
     var el = document.getElementById("newroom");
-	Rooms.insert({roomname: el.value});
+    Rooms.insert({roomname: el.value});
     el.value = "";
     el.focus();
   };
