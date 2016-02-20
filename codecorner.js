@@ -37,6 +37,7 @@ if (Meteor.isClient) {
     }
   });
 
+
   _sendMessage = function() {
     var el = document.getElementById("msg");
     Messages.insert({user: Meteor.user().username, msg: el.value, ts: new Date(), room: Session.get("roomname")});
@@ -82,6 +83,20 @@ if (Meteor.isClient) {
       return Meteor.release;
     }
   });
+
+  Template.roominput.events({
+    'click .createRoom': function(e) {
+       _createRoom();
+    }
+  });
+
+  _createRoom = function() {
+    var el = document.getElementById("room-name");
+    Rooms.insert(el.value);
+    el.value = "";
+    el.focus();
+  };
+
 }
 
 if (Meteor.isServer) {

@@ -45,9 +45,15 @@
                 {{> messages}}
             </div>
             <div class="span4 well">
+                {{> roominput}}
                 {{> rooms}}
             </div>
         </div>
+</template>
+
+<template name="roominput">
+    <input type="text" id="room-name" placeholder="New room?" style="width: 20%; margin-bottom: 0px">
+    <input type="button" value="Create Room" class="btn btn-primary createRoom">
 </template>
 
 <template name="input">
