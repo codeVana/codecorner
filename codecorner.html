@@ -97,6 +97,7 @@
     <div class="card small">
       <div class="card-image">
         <img src="{{img}}" />
+        <div class="next-chat {{#if nextChatEmpty }}not-available{{/if}}">Next ChickTECH chat session: {{nextChat}}</div>
         <!-- <span class="card-title">{{title}}</span> -->
       </div>
       <div class="card-content">
@@ -118,7 +119,8 @@
         </div>
       </div>
       <div class="card-action">
-        <a href="/codecorner/{{_id}}">{{title}}</a> (Next ChickTECH chat session: {{nextChat}})
+        <a href="/codecorner/{{_id}}">{{title}}</a> 
+
       </div>
     </div>
   </div>

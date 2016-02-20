@@ -220,6 +220,12 @@ if (Meteor.isClient) {
 
   Session.setDefault('counter', 0);
 
+  Template.codecorner_item.helpers({
+    nextChatEmpty: function() {
+      return !this.nextChat || this.nextChat == '';
+    }
+  });
+
 
   Template.welcome.helpers({
     posts: function() {

@@ -11,6 +11,22 @@ nav {
   height: 100px;
 }
 
+.card-image, .card-image img {
+	position: relative;
+}
+
+.next-chat {
+	background-color: #000;
+	color: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.next-chat.not-available {
+	background-color: #FA9BA1;
+}
+
 .brand-font {
   font-family: 'Cookie', cursive;
   font-size: 72pt;
