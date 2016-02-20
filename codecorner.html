@@ -19,12 +19,23 @@
 <template name="welcome">
   <div class="container">
     <div class="jumbotron">
-      <h1>Welcome to Code Corner!</h1>
+      <h1>Code Corner</h1>
     </div>
+    <h2>{{length}}</h2>
+    <ul>
+      
+      {{#each posts}}
+      <li>
+        Title: {{ title }}
+        </li>
+      {{/each}}
+      
+    </ul>
   </div>
+
 </template>
 
-<template name="post">	
+<template name="postList">	
  <div class="container">
   <h3>submit to codecorner</h3>
 <h2> {{{submitted}}} </h2>
