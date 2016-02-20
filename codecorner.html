@@ -97,20 +97,25 @@
   <div class="col s12 m12">
     <div class="card small">
       <div class="card-image">
-        <span class="card-title">{{title}}</span>
+        <img src="{{img}}" />
+        <!-- <span class="card-title">{{title}}</span> -->
       </div>
       <div class="card-content">
-        <h5> <a href="/codecorner/{{_id}}">{{title}}</a> </h5>
-      <ul>
-        <li> <span class="website_item_score"> UpScore: {{upscore}} </span> </li>
-        <li> <span class="website_item_score"> DownScore: {{downscore}} </span></li>
-      </ul>
-      <a href="#" class="btn btn-default js-upvote">
-        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-      </a>
-      <a href="#" class="btn btn-default js-downvote">
-        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-      </a>
+        <!-- <div class="category-title"><a href="/codecorner/{{_id}}">{{title}}</a> </div> -->
+        <div class="controls-wrapper">
+            <div class="score">
+                <div class="website_item_score"> UpScore: {{upscore}} </div>
+                <div class="website_item_score"> DownScore: {{downscore}} </div>
+            </div>
+            <div class="voting">
+              <a href="#" class="btn btn-default js-upvote">
+                <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+              </a>
+              <a href="#" class="btn btn-default js-downvote">
+                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+              </a>
+            </div>
+        </div>
       </div>
       <div class="card-action">
         <a href="/codecorner/{{_id}}">{{title}}</a>
