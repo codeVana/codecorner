@@ -40,11 +40,11 @@ if (Meteor.isClient) {
   });
 
    Template.post.events({
-    'submit .new-post': function(event) {
+    'submit .new-post': function(event, template) {
         event.preventDefault();
         var title = event.target.title.value;
-        console.log(event.target.summernote)
-        var text = event.target.summernote.code;
+        var text = $('.summernote').summernote('code');
+        template.submitted = text;
         console.log(title);
         console.log(text);
     }
@@ -52,7 +52,7 @@ if (Meteor.isClient) {
 
    Template.post.rendered = function () {
     $('.summernote').summernote({
-      height: 100
+      height: 200
     });
   };
 }
