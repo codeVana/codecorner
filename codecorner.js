@@ -1,3 +1,5 @@
+//hello
+//this is a test hello tanna bla bla 
 Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
 Corner = new Mongo.Collection("instructables")
