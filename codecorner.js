@@ -1,4 +1,3 @@
-//hello hello testing 123
 Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
 Corner = new Mongo.Collection("instructables")
@@ -6,7 +5,7 @@ Posts = new Mongo.Collection("posts");
 
 if (Meteor.isClient) {
   Accounts.ui.config({
-    passwordSignupFields: 'USERNAME_ONLY'
+    passwordSignupFields: 'USERNAME_AND_EMAIL'
   });
   Meteor.subscribe("corner");
   Router.configure({
