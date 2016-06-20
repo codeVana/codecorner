@@ -92,9 +92,13 @@ if (Meteor.isClient) {
 			// example of how you can access the id for the website in the database
 			// (this is the data context for the template)
 			var website_id = this._id;
-			Meteor.call("addUpVote", website_id);
-			return false;// prevent the button from reloading the page
-		},
+      var counter = 0;
+      while (counter <= 1){
+			   Meteor.call("addUpVote", website_id);
+			   counter++;
+         return false;// prevent the button from reloading the page
+		}
+    },
 		"click .js-downvote":function(event){
 
 			// example of how you can access the id for the website in the database
