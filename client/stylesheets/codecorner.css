@@ -34,9 +34,15 @@ nav {
 
 #brand-logo {
   margin-top: 16px;
+  margin-right: 10px;
   font-size: 32pt;
 }
 
+.navbar {
+	font-size: 24pt;
+	margin-top: 16px;
+	font-family: 'Cookie'
+}
 .main-cardlist .card {
 	width: 22%;
 	float: left;
@@ -58,9 +64,6 @@ nav {
 	margin-bottom: 10px;
 }
 
-.post-link {
-	font-size: 16pt;
-}
 
 .jumbotron {
 	font-family:"Lucida Sans Unicode";

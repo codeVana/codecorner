@@ -20,10 +20,10 @@
     <div class="nav-wrapper valign-wrapper">
       <a href="codecorner" id="brand-logo" class="brand-logo right color-primary-3 brand-font">Code Corner</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="#" class="color-primary-0">{{> loginButtons}}</a></li>
-        <li><a href="https://github.com/codeVana/codecorner" target="_blank">Source</a></li>
+        <li><a href="#" class="color-primary-0 navbar">{{> loginButtons}}</a></li>
+        <li><a href="https://github.com/codeVana/codecorner" class = "navbar" target="_blank">Source</a></li>
         {{#if currentUser}}
-        <li><a href="/post" class="post-link">Post</a></li>
+        <li><a href="/post" class="navbar">Post</a></li>
         {{/if}}
       </ul>
     </div>
@@ -40,7 +40,7 @@
 </template>
 
 <template name="codecornersplash">
-  <div id="index-banner" class="parallax-container">
+  <div id="index-banner" class="parallax-container">x
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
