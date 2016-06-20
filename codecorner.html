@@ -4,6 +4,7 @@
 </head>
 
 <body>
+
 </body>
 
 <template name="ApplicationLayout">
@@ -17,7 +18,7 @@
 <template name="navbar">
   <nav class="background-color-primary-3">
     <div class="nav-wrapper valign-wrapper">
-      <a href="codecorner" id="brand-logo" class="brand-logo right color-primary-1 brand-font">Code Corner</a>
+      <a href="codecorner" id="brand-logo" class="brand-logo right color-primary-3 brand-font">Code Corner</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="#" class="color-primary-0">{{> loginButtons}}</a></li>
         <li><a href="https://github.com/codeVana/codecorner" target="_blank">Source</a></li>
@@ -122,7 +123,7 @@
         </div>
       </div>
       <div class="card-action color-primary-3">
-        <a href="/codecorner/{{_id}}">{{title}}</a>
+        <a href="/{{_id}}">{{title}}</a>
       </div>
     </div>
   </div>

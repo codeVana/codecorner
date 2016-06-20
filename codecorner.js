@@ -42,7 +42,7 @@ if (Meteor.isClient) {
       });
   	});
 
-    Router.route('/codecorner/:_id', function () {
+    Router.route('/:_id', function () {
       this.render('navbar', {
         to:"navbar"
       });
