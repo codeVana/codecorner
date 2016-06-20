@@ -19,7 +19,7 @@
     <div class="nav-wrapper valign-wrapper">
       <a href="codecorner" id="brand-logo" class="brand-logo right color-primary-1 brand-font">Code Corner</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="#" class="color-primary-1">{{> loginButtons}}</a></li>
+        <li><a href="#" class="color-primary-0">{{> loginButtons}}</a></li>
         <li><a href="https://github.com/codeVana/codecorner" target="_blank">Source</a></li>
         {{#if currentUser}}
         <li><a href="/post" class="post-link">Post</a></li>
@@ -30,8 +30,8 @@
 </template>
 
 <template name="welcome">
-  <div class="container">
-    <div class="jumbotron">
+  <div class="container center">
+    <div class="jumbotron color-primary-1">
       <h1>Welcome to <span class="brand-font">Code Corner</span> {{username}}!</h1>
       <a href="/codecorner" class="btn btn-info">ENTER</a>
     </div>
