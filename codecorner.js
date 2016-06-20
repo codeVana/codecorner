@@ -1,5 +1,4 @@
-//hello
-//this is a test hello tanna bla bla 
+//hello hello testing 123
 Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
 Corner = new Mongo.Collection("instructables")
