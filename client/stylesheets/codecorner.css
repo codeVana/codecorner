@@ -69,7 +69,51 @@ nav {
 	font-family:"Lucida Sans Unicode";
 }
 
-/*.sign-in-font {
-	font-size: 16pt ;
-	font-family:"Arial Black";
-}*/
+.login-link-text {
+	font-size: 24pt;
+
+}
+
+/*css from the website for search bar*/
+  #tfheader{
+    /*background-color:#c3dfef;*/
+    background-color:#ffffff;
+  }
+  #tfnewsearch{
+    float:center;
+    padding:20px;
+  }
+  .tftextinput{
+    margin: 0;
+    font-family: "Lucida Sans Unicode";
+    font-size: 20pt !important;
+    color: #ffffff;
+  }
+  .tfbutton {
+    margin: 0;
+    font-family: 'Cookie';
+    font-size: 20pt;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+  }
+  .tfbutton:hover {
+    text-decoration: none;
+    background: #ffffff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+    background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+  }
+  /* Fixes submit button height problem in Firefox */
+  .tfbutton::-moz-focus-inner {
+    border: 0;
+  }
+  .tfclear{
+    clear:both;
+  }
+input.inputblur {
+	font-size: 20pt;
+	font-weight: bold;
+}
