@@ -19,9 +19,9 @@
   <nav class="background-color-primary-3">
     <div class="nav-wrapper valign-wrapper">
       <a href="codecorner" id="brand-logo" class="brand-logo right color-primary-3 brand-font">Code Corner</a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="#" class="color-primary-0 navbar">{{> loginButtons}}</a></li>
-        <li><a href="https://github.com/codeVana/codecorner" class = "navbar" target="_blank">Source</a></li>
+        <li><a href="https://github.com/codeVana/codecorner" class = "navbar" target="_blank">Source Code</a></li>
         {{#if currentUser}}
         <li><a href="/post" class="navbar">Post</a></li>
         {{/if}}
@@ -49,6 +49,13 @@
           <h4 class="header col s12">Instructables for Code</h4>
         </div>
         <br><br>
+        <div class="row center">
+            <form  id="tfnewsearch" method="get" action="http://www.google.com" class="center navbar">
+            <input placeholder="Search..." type="text" class="center tftextinput navbar" name="q" size="20" maxlength="120">
+            <input type="submit" value="Let's Code it!" class="center tfbutton">
+      </form>
+    </div>
+      <br><br>
       </div>
     </div>
     <div class="parallax"><img src="https://pixabay.com/static/uploads/photo/2015/05/26/23/52/technology-785742_960_720.jpg" alt="Unsplashed background img 1"></div>
@@ -373,3 +380,4 @@
   	</form>
   </div>
 </template>
+
