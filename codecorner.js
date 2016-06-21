@@ -403,18 +403,4 @@ if (Meteor.isServer) {
     return Posts.find({});
   });
 
-  Index = new EasySearch.Index({
-    collection: Corner,
-    fields: ['title','description','category'],
-    engine: new EasySearch.MongoDB()
-  });
-
-
-
-}
-
-
-
-
-
 
