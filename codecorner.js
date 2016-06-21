@@ -405,3 +405,4 @@ if (Meteor.isServer) {
     return Posts.find({});
   });
 }
+
