@@ -1,8 +1,8 @@
 Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
-Corner = new Mongo.Collection("instructables")
+Corner = new Mongo.Collection("instructables");
 Posts = new Mongo.Collection("posts");
-
+//Template.myAtSocial.replaces("loginButtons");
 if (Meteor.isClient) {
   Accounts.ui.config({
     passwordSignupFields: 'USERNAME_AND_EMAIL'
@@ -92,12 +92,9 @@ if (Meteor.isClient) {
 			// example of how you can access the id for the website in the database
 			// (this is the data context for the template)
 			var website_id = this._id;
-      var counter = 0;
-      while (counter <= 1){
-			   Meteor.call("addUpVote", website_id);
-			   counter++;
+      Meteor.call("addUpVote", website_id);
          return false;// prevent the button from reloading the page
-		}
+		
     },
 		/*"click .js-downvote":function(event){
 
@@ -146,6 +143,7 @@ if (Meteor.isClient) {
     el.value = "";
     el.focus();
   };
+
 
   Template.messages.helpers({
     messages: function() {
@@ -298,7 +296,7 @@ if (Meteor.isServer) {
   			Corner.update(corner_id, {$inc: {upscore: 1}});
   		},
   		addDownVote: function(corner_id) {
-  			Corner.update(corner_id, {$inc: {downscore: 1}});
+  			Corner.update(corner_id, {$inc: {upscore: -1}});
   		}
   	});
   	 Meteor.publish("corner", function() {
@@ -405,5 +403,9 @@ if (Meteor.isServer) {
   Meteor.publish("posts", function () {
     return Posts.find({});
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> e71ca544c41ca855a95a3ca65f669aa1aba5c1fa
 
 }
