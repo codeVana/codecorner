@@ -403,9 +403,5 @@ if (Meteor.isServer) {
   Meteor.publish("posts", function () {
     return Posts.find({});
   });
-<<<<<<< HEAD
-=======
 
->>>>>>> e71ca544c41ca855a95a3ca65f669aa1aba5c1fa
-
-}
+  }
