@@ -50,6 +50,8 @@ nav {
 	margin-left: 1%;
 	margin-right: 1%;
 	margin-bottom: 20px;
+  font-size: 16pt;
+  font-family: "Sans-serif";
 }
 
 .login-link-text {
@@ -129,3 +131,14 @@ input.inputblur {
   float:right;
   vertical-align:right !important;
 }
+
+.score {
+  font-size: 14pt;
+  font-family:"Lucida Sans Unicode";
+
+}
+.waves-effect.waves-brown .waves-ripple {
+     /* The alpha value allows the text and background color
+     of the button to still show through. */
+      background-color: color-primary-1;
+    }
