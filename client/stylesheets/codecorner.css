@@ -51,7 +51,7 @@ nav {
 	margin-right: 1%;
 	margin-bottom: 20px;
   font-size: 16pt;
-  font-family: "Sans-serif";
+  font-family: "Arial";
 }
 
 .login-link-text {
@@ -134,7 +134,7 @@ input.inputblur {
 
 .score {
   font-size: 14pt;
-  font-family:"Lucida Sans Unicode";
+  font-family:"Arial";
 
 }
 .waves-effect.waves-brown .waves-ripple {
