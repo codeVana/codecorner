@@ -35,7 +35,7 @@ nav {
 
 #brand-logo {
   margin-top: 16px;
-  margin-left: 120px;
+  margin-right: 120px;
   font-size: 32pt;
 }
 
@@ -125,6 +125,7 @@ input.inputblur {
 }
 
 .logo {
-  margin-left:120;
-
+  margin-right:120;
+  float:right;
+  vertical-align:right !important;
 }

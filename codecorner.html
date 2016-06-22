@@ -19,20 +19,17 @@
 <template name="navbar">
   <nav class="background-color-primary-3">
     <div class="nav-wrapper valign-wrapper">
-
-<!--valign-wrapper-->
-
-    
-      <a href="codecorner" id="brand-logo" class="logo brand-logo left color-primary-3 brand-font">Code Corner</a>
-      <img src="../images/robot_logo.png" style = "width:100px;height:100px;">
+     <img class="right brand-logo logo image" src="../images/robot_logo.png" style = "width:100px;height:100px;text-align:right">
+      <a href="codecorner" id="brand-logo" class="logo brand-logo right color-primary-3 brand-font">Code Corner</a>
       
-        <div class="right">
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <div class="left">
+        
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="#" class="color-primary-0 navbar">{{> loginButtons}}</a></li>
+        <li><a href="https://github.com/codeVana/codecorner" class = "left navbar" target="_blank">Source Code</a></li>
           {{#if currentUser}}
           <li><a href="/post" class="navbar">Post</a></li>
           {{/if}}
-          <li><a href="https://github.com/codeVana/codecorner" class = "navbar" target="_blank">Source Code</a></li>
-          <li><a href="#" class="color-primary-0 navbar">{{> loginButtons}}</a></li>
       </ul>
       </div>
     </div>
