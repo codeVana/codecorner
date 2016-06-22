@@ -1,3 +1,4 @@
+
 Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
 Corner = new Mongo.Collection("instructables");
@@ -403,4 +404,5 @@ if (Meteor.isServer) {
   Meteor.publish("posts", function () {
     return Posts.find({});
   });
+}
 
