@@ -29,7 +29,7 @@ if (Meteor.isClient) {
         to:"navbar"
       });
       this.render('codecornersplash', {
-        to:"splash",
+        to:"splash"
       });
       this.render('codecorner_list', {
         to:"main"
@@ -40,10 +40,9 @@ if (Meteor.isClient) {
       this.render('navbar',{
         to:"navbar"
       });
-        this.render('chatwindow', {
-        to: "chat"
-      })
-
+      this.render('chatwindow', {
+        to:"main"
+      });
     });
 
 
