@@ -313,7 +313,7 @@ if (Meteor.isServer) {
    			}
   			Corner.insert({
   			title:title,
-  			url:url,
+//  			url:url,
         img:img,
 //        video:video,
   			description:description,
