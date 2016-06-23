@@ -277,7 +277,7 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     Meteor.methods({
-  		addCorner: function(title, url, description, img, video) {
+  		addCorner: function(title, url, description, img) {
   			if (! Meteor.userId()) {
   	 		throw new Meteor.Error("not-authorized");
    			}
@@ -285,7 +285,7 @@ if (Meteor.isServer) {
   			title:title,
   			url:url,
         img:img,
-        video:video,
+//        video:video,
   			description:description,
   			owner: Meteor.userId(),
         username: Meteor.user().username,
