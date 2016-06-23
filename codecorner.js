@@ -42,7 +42,7 @@ if (Meteor.isClient) {
       });
         this.render('chatwindow', {
         to: "chat"
-      });
+      })
 
     });
 
