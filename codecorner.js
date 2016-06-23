@@ -40,11 +40,8 @@ if (Meteor.isClient) {
       this.render('navbar',{
         to:"navbar"
       });
-            this.render('', {
-        to:"splash"
-      });
         this.render('chatwindow', {
-        to: "chat"
+        to: "main"
       });
 
     });
@@ -316,7 +313,7 @@ if (Meteor.isServer) {
    			}
   			Corner.insert({
   			title:title,
-//  			url:url,
+  			url:url,
         img:img,
 //        video:video,
   			description:description,
