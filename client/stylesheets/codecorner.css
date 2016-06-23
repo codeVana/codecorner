@@ -11,9 +11,11 @@ nav {
   height: 100px;
 }
 
-.post {
-  background-color: color-primary-0;
-  font-color: #ffffff;
+#post {
+  /*background-color: color-primary-0;
+  font-color: #ffffff;*/
+  background-color: #1D3671 ;
+    color:white;
 }
 
 .card-image, .card-image img {
@@ -95,12 +97,14 @@ nav {
     float:center;
     padding:20px;
   }
-  /*.tftextinput{
+
+  .tftextinput{
     margin: 0;
     font-family: "Lucida Sans Unicode";
-    font-size: 20pt !important;
+    font-size: 16pt !important;
     color: #ffffff;
-  }*/
+  }
+
   .tfbutton {
     margin: 0;
     font-family: 'Cookie';
