@@ -3,8 +3,13 @@ Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
 Corner = new Mongo.Collection("instructables");
 Posts = new Mongo.Collection("posts");
+
 //Template.myAtSocial.replaces("loginButtons");
 if (Meteor.isClient) {
+
+
+
+
   Accounts.ui.config({
     passwordSignupFields: 'USERNAME_AND_EMAIL'
   });
@@ -31,6 +36,8 @@ if (Meteor.isClient) {
       });
     });
 
+
+
   	Router.route('/codecorner/chat', function () {
     	this.render('navbar', {
       	to:"navbar"
@@ -42,6 +49,8 @@ if (Meteor.isClient) {
         to: "chat"
       });
   	});
+
+
 
     Router.route('/:_id', function () {
       this.render('navbar', {
@@ -58,7 +67,7 @@ if (Meteor.isClient) {
       });
       this.render('chatwindow', {
         to: "chat"
-      });
+      })
     });
 
   Template.codecornersplash.rendered = function() {
@@ -68,6 +77,7 @@ if (Meteor.isClient) {
   Template.codecorner_item_details.rendered = function() {
     $('.carousel').carousel();
   };
+  
 
   Template.codecorner_list.helpers({
 		codecorners:function(){
@@ -187,13 +197,19 @@ if (Meteor.isClient) {
       return Meteor.release;
     }
   });
-/*
+
   Template.roominput.events({
     'click .createRoom': function(e) {
        _createRoom();
-    }
+    },
+    /*'keyup #room-name': function(e) {
+      if (e.type == "keyup" && e.which == 13) {
+        _createRoom();
+      }
+    }*/
+
   });
-*/
+
   _createRoom = function() {
     var el = document.getElementById("room-name");
     Rooms.insert(el.value);
@@ -215,6 +231,12 @@ if (Meteor.isClient) {
   Router.route('/post', function () {
     this.render('navbar', { to: "navbar" });
     this.render('postList', { to: "main" });
+  });
+
+  Router.route('/forum',function(){
+    this.render('navbar',{to:"navbar"});
+    this.render('postList',{to:"main"});
+
   });
 
 
@@ -252,7 +274,7 @@ if (Meteor.isClient) {
         Corner.insert({
   			title:title,
 //  			url:url,
-        img:"https://pbs.twimg.com/profile_images/2266463001/bntsgwxu124en7h8pmhz_400x400.jpeg",
+        img:"../images/preview.jpg",
 //        video:video,
   			description:description,
   			owner: Meteor.userId(),
@@ -393,7 +415,7 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish("rooms", function () {
-    return Rooms.find();
+    return Rooms.find({}, {sort: {ts: -1}});
   });
   Meteor.publish("messages", function () {
     return Messages.find({}, {sort: {ts: -1}});
@@ -404,4 +426,6 @@ if (Meteor.isServer) {
   Meteor.publish("posts", function () {
     return Posts.find({});
   });
+
+
 }

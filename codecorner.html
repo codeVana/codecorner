@@ -30,6 +30,7 @@
         <li><a href="https://github.com/codeVana/codecorner" class = "left navbar" target="_blank">Source Code</a></li>
           {{#if currentUser}}
           <li><a href="/post" class="navbar">Post</a></li>
+          <li><a href="/forum" class="navbar">Forum</a></li>
           {{/if}}
       </ul>
     </div>
@@ -146,6 +147,17 @@
     </div>
   </div>
 </template>
+
+<!--forum page-->
+<template name="codecorner_forum">
+<div class= "container">
+<h1 class ="forum"> Post to the Forum!</h1>
+<p class="text"> Please post questions, comments, or anything you want! </p>
+</div>
+
+
+</template>
+
 
 <!--post page-->
 <template name="codecorner_item_details">
@@ -334,22 +346,33 @@
 <template name="chat">
         <div class="row-fluid">
             <div class="span12 well">
-                {{> input}}
+                {{> rooms}}
             </div>
         </div>
         <div class="row-fluid">
             <div class="span8 well">
-                {{> messages}}
+                {{> input}}
             </div>
             <div class="span4 well">
-                {{> rooms}}
+                {{> messages}}
             </div>
         </div>
 </template>
 
+<template name="rooms">
+    <h1>Forums:</h1>
+    <ul>
+    {{#each rooms}}
+        {{> room}}
+    {{/each}}
+    </ul>
+    <input type="text" id="newroom" placeholder="New Forum" style="width: 50%; margin-bottom: 0px">
+    <input type="button" value="Create it!" class="btn btn-default createRoom">
+</template>
+
 <template name="input">
-    <input type="text" id="msg" placeholder="Your message goes here..." style="width: 50%; margin-bottom: 0px">
-    <input type="button" value="Send message" class="btn btn-primary sendMsg">
+    <input type="text" id="msg" placeholder="Your message goes here..." style="width: 60%; margin-bottom: 0px">
+    <input type="button" value="Send message" class="btn btn-default ">
 </template>
 
 <template name="messages">
@@ -365,16 +388,6 @@
     <p><strong>{{user}}</strong> <span style="font-size: 0.7em; color: darkgray">({{timestamp}})</span>: <i>{{msg}}</i></p>
 </template>
 
-<template name="rooms">
-    <h4>Join a room:</h4>
-    <ul>
-    {{#each rooms}}
-        {{> room}}
-    {{/each}}
-    </ul>
-	  <input type="text" id="newroom" placeholder="New Room" style="width: 50%; margin-bottom: 0px">
-    <input type="button" value="Create it!" class="btn btn-primary createRoom">
-</template>
 
 <template name="room">
     <li style="cursor: pointer; {{roomstyle}}">{{roomname}}</li>

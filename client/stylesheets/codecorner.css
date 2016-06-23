@@ -91,12 +91,12 @@ nav {
     float:center;
     padding:20px;
   }
-  .tftextinput{
+  /*.tftextinput{
     margin: 0;
     font-family: "Lucida Sans Unicode";
     font-size: 20pt !important;
     color: #ffffff;
-  }
+  }*/
   .tfbutton {
     margin: 0;
     font-family: 'Cookie';
