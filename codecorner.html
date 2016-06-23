@@ -143,10 +143,35 @@
   </div>
 </template>
 
+<!--post page-->
 <template name="codecorner_item_details">
- <ul class="collection">
+  <div class="container">
+  <h1 class="contribute"> Contribute to CodeCorner!</h1>
+  <p class="text"> CodeCorner thrives on people like you taking the time to post and contribute to the community. Thanks so much!</p>
+  </div>
+
+
+  <div style="width: 90%;">
+   <div style="float:left; width: 50%">
+
+   <form action="demo_form.asp">
+  First name: <input type="text" name="fname"><br>
+  Last name: <input type="text" name="lname"><br>
+  <input type="submit" value="Submit">
+</form>
+
+   </div>
+   <div style="float:right;">
+
+   </div>
+</div>
+<div style="clear:both"></div>
+
+
+
+ <ul class="container collection">
    <li class="collection-item avatar">
-     <img src="images/yuna.jpg" alt="" class="circle">
+     <img src="../images/robot_logo.png" alt="" class="circle">
      <span class="title">{{title}}</span>
      <p>{{{description}}}
      </p>

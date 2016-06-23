@@ -142,3 +142,13 @@ input.inputblur {
      of the button to still show through. */
       background-color: color-primary-1;
     }
+.contribute {
+  font-family: 'Cookie';
+  font-size: 48pt;
+}
+
+.text {
+  font-family:"Lucida Sans Unicode";
+  font-size: 16pt;
+
+}
