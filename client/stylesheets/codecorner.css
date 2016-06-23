@@ -116,9 +116,9 @@ table {
   }
 
   .tftextinput{
-    margin: 0;
+    margin: 5px;
     font-family: "Lucida Sans Unicode";
-    font-size: 16pt !important;
+    font-size: 20pt !important;
     color: #ffffff;
   }
 
@@ -183,11 +183,11 @@ input.inputblur {
 
 .submit {
   font-family:'Cookie';
-  font-size: 24pt;
+  font-size: 18pt;
   float: right;
   margin: 20pt;
   -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
+  transition-duration: 0.4s;
 
 }
 
@@ -210,6 +210,7 @@ input.inputblur {
   font-family: "Lucida Sans Unicode";
   font-size: 12pt;
   margin-bottom: 10pt;
+
 }
 
 .type{
@@ -221,5 +222,25 @@ input.inputblur {
     border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #f8f8f8;
+    color:black;
 }
 
+.btn {
+  text-transform: lowercase;
+  padding: none;
+  margin:none;
+
+}
+
+
+.optional {  
+  margin: 5px;
+    font-family: "Lucida Sans Unicode";
+    color: #ffffff;
+  font-size: 12pt !important;
+}
+
+.optionaltitles {
+  font-size: 18pt;
+
+}

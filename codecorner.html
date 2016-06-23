@@ -154,60 +154,59 @@
 
 
 <!--post page-->
-<template name="codecorner_item_details">
+
+<template name="postList">
+
+ <div class="container">
   <div class="container">
-  <h1 class="contribute"> Contribute to CodeCorner!</h1>
-  <p class="text"> CodeCorner thrives on people like you taking the time to post and contribute to the community. Thanks so much!</p>
+    <h1 class="contribute"> Contribute to CodeCorner!</h1>
+    <p class="text"> CodeCorner thrives on people like you taking the time to post and contribute to the community. Thanks so much!
+    Fill out the following form with the information you want to share. For optional fields, leave them empty if you have nothing to add.</p>
+    <h2> {{{submitted}}} </h2>
   </div>
 
 
- <ul id="post" class="container collection">
-   <li id="post" class="collection-item avatar">
-     
+  <form name="newpost" class="new-post postTitle">
+    <ul id="post" class="container collection">
+      <li id="post" class="collection-item avatar">
+        <div style="width: 90%">
+          <div style="float:left">
+            Title (required): <input type="text" name="title" class="tftextinput" required><br>
+            <br><br>
 
+            <span class="optionaltitles">
+            Categories (optional): <input type="text" name="categories" class="optional"><br>
+            Image Source (optional): <input type="text" name="img" class="optional"><br>
+            url (optional): <input type="text" name="url" class="optional"><br>
+            </span>
+          </div>
+          <div style="float:right;">
+            <img src="../images/robot_logo.png" alt="robo-logo" style="width:250px;height:250px;padding:10px">
+          </div>
+        </div>
+        <div style="clear:both"></div>
+      </li>
 
-      <div style="width: 90%">
-   <div style="float:left">
- 
-    
-   <form class="postTitle" action="demo_form.asp">
-  Title: <input type="text" name="title" class="tftextinput"><br>
-  Categories: <input type="text" name="categories" class="tftextinput"><br>
-    </form>
-   
-   </div>
-   <div style="float:right;">
-     <img src="../images/robot_logo.png" alt="robo-logo" style="width:100px;height:100px;padding:10px">
-    
-   </div>
-</div>
-<div style="clear:both"></div>
-</li>
+      <li id="post" class="summernote collection-item avatar"> 
+        <h2 class="postTitle">Description</h2>
+        <p class="textarea"> Describe what your post is about here! For example, is it a community announcement? A snippet of code that you want to show the world? A tough project that you've figured out? A question you have? The possibilities are endless!</p>
+        <textarea form="newpost" placeholder="Type here..." name="description" class="type textarea"></textarea>
+       </li>
 
-
-   <li id="post" class="collection-item avatar"> 
-     <!--i class="material-icons circle red">play_arrow</i-->
-     <h2 class="postTitle">Description</h2>
-     <p class="textarea"> Describe what your post is about here! For example, is it a community announcement? A snippet of code that you want to show the world? A tough project that you've figured out? A question you have? The possibilities are endless!</p>
-     <textarea placeholder="Type here..." name="description" class="type"></textarea>
-
-   </li>
-
-   
-   <li id="post" class="collection-item avatar">
-     <!--i class="material-icons circle">folder</i-->
-     <h2 class="postTitle">Code</h2>
-     <p class="textarea">Insert code that is relevant to your post here! Feel free to add comments that explain it either here or in the description section above.</p>
-     <textarea placeholder="Type here..." name="code" class="type"></textarea>
-   </li>
-
- </ul>
- <div class="container">
-
-
- <input class="submit color-primary-3" type="submit" value="Publish!">
-  <a href="codecorner" class="submit color-primary-2"> cancel </a>
- </div>
+       <li id="post" class="collection-item avatar">
+          <h2 class="postTitle">Code</h2>
+          <p class="textarea">Insert code that is relevant to your post here! Feel free to add comments that explain it either here or in the description section above.</p>
+          <textarea form="newpost" placeholder="Type here..." name="code" class="type textarea"></textarea>
+       </li>
+     </ul>
+    <div class="summernote">
+    </div>
+    <div class="container">
+      <button class="btn submit color-primary-0">Publish!</button>
+      <a href="codecorner" class="submit color-primary-2"> cancel </a>
+    </div>
+  </form>
+  </div>
 </template>
 
 
@@ -436,21 +435,40 @@
 
 
 
-<template name="postList">
- <div class="container">
-  <h3>submit to codecorner</h3>
-<h2> {{{submitted}}} </h2>
-  <form class="new-post">
-  <div class="row">
-  <div class="input-field col s12">
-          <input id="title" type="text">
-          <label for="title">Title</label>
-   </div>
-   </div>
-  <div class="summernote">
-  </div>
-    <button class="btn waves-effect waves-light">Submit
-  	</button>
-  	</form>
-  </div>
+
+
+<template name="codecorner_item_details">
+  <div class="container">
+    {{Title}}
+  </div>
+<ul id="post" class="container collection">
+   <li id="post" class="collection-item avatar">
+      <div style="width: 90%">
+        <div style="float:left">
+          <h2 class="brand-font">{{{title}}}</h2>
+          <h2 class="postTitle">Categories: {{category}}</h2>
+        </div>
+        <div style="float:right;">
+          <img src="{{ img }}" alt="picture" style="width:250px;height:250px;padding:10px">
+        </div>
+      </div>
+      <div style="clear:both"></div>
+  </li>
+
+  <li id="post" class="collection-item avatar"> 
+     <!--i class="material-icons circle red">play_arrow</i-->
+     <h2 class="postTitle">Description</h2>
+     <p class="textarea"> {{description}}</p>
+  </li>
+
+   <li id="post" class="collection-item avatar">
+     <!--i class="material-icons circle">folder</i-->
+     <h2 class="postTitle">Code</h2>
+     <p class="textarea"> {{code}}</p>
+   </li>
+</ul>
+ <div class="container">
+    <h3 class="textarea"> Find more information at {{ url}}. </h3>
+ </div>
+
 </template>
