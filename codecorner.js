@@ -3,6 +3,7 @@ Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
 Corner = new Mongo.Collection("instructables");
 Posts = new Mongo.Collection("posts");
+var post_counter = 0;
 
 //Template.myAtSocial.replaces("loginButtons");
 if (Meteor.isClient) {
@@ -141,6 +142,13 @@ if (Meteor.isClient) {
 	}
   });
 
+  Template.messages.events({
+    'click .deleteRoom'(){
+      Rooms.remove(this._id);
+    },
+  });
+
+
   Template.input.events({
     'click .sendMsg': function(e) {
        _sendMessage();
@@ -161,12 +169,13 @@ if (Meteor.isClient) {
   };
 
   _createRoom = function() {
+
     var el = document.getElementById("newroom");
     Rooms.insert({roomname: el.value});
     el.value = "";
     el.focus();
-  };
 
+  };
 
   Template.messages.helpers({
     messages: function() {
@@ -227,6 +236,7 @@ if (Meteor.isClient) {
     Rooms.insert(el.value);
     el.value = "";
     el.focus();
+
   };
   Meteor.subscribe("posts");
 
@@ -432,15 +442,17 @@ if (Meteor.isServer) {
   Meteor.publish("rooms", function () {
     return Rooms.find({}, {sort: {ts: -1}});
   });
+
+    Meteor.publish("posts", function () {
+    return Posts.find({}, {sort: {ts: -1}});
+  });
   Meteor.publish("messages", function () {
     return Messages.find({}, {sort: {ts: -1}});
 
 
   });
 
-  Meteor.publish("posts", function () {
-    return Posts.find({});
-  });
+
 
 
 }

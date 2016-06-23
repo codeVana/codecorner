@@ -364,39 +364,55 @@
 
 <!--forum page-->
 
-<template name="rooms">
-    <h1>Forums:</h1>
-    <ul>
+<template name="rooms" id = "forum">
+<div id="forum">
+    <table>
+    <tbody>
+    <tr >
+    <th style="padding-left:0 underline">Forums</th>
+    <th style="padding-right:20">Posts</th>
+    <th style="padding-right:0">Replies</th>
+    </tr>
+    <tr>
+    <td> 
     {{#each rooms}}
         {{> room}}
     {{/each}}
-    </ul>
-    <input type="text" id="newroom" placeholder="New Forum" style="width: 50%; margin-bottom: 0px">
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    <input type="text" id="newroom" placeholder="New Forum" style="width: 20%; margin-bottom: 0px">
     <input type="button" value="Create it!" class="btn btn-default createRoom">
+    </div>
 </template>
 
-<template name="input">
+
+
+<template name="room" id="forum" >
+    <li style="cursor: pointer; {{roomstyle}}">{{roomname}}</li>
+</template>
+
+<template name="input" id = "forum">
     <input type="text" id="msg" placeholder="Your message goes here..." style="width: 60%; margin-bottom: 0px">
     <input type="button" value="Send message" class="btn btn-default sendMsg">
 </template>
 
-<template name="messages">
-    <h4>Room: {{roomname}}</h4>
+<template name="messages" id = "forum">
+    <h4 style="padding-left:0" class = "contribute">Room: {{roomname}}</h4>
+    
     <div id="messages" style="background-color: #ffffff; border: 1px solid darkgray; max-height: 200px; overflow: auto">
         {{#each messages}}
             {{> message}}
         {{/each}}
     </div>
+    <input type="button" value="Delete Room" class="btn btn-default sendMsg">
 </template>
 
-<template name="message">
+<template name="message" id="forum">
     <p><strong>{{user}}</strong> <span style="font-size: 0.7em; color: darkgray">({{timestamp}})</span>: <i>{{msg}}</i></p>
 </template>
 
-
-<template name="room">
-    <li style="cursor: pointer; {{roomstyle}}">{{roomname}}</li>
-</template>
 
 
 

@@ -11,6 +11,18 @@ nav {
   height: 100px;
 }
 
+
+
+
+table {
+  list-style-type: none;
+  padding:15px;
+  border-collapse: collapse;
+}
+#newroom {
+  background-color:white;
+}
+
 #post {
   /*background-color: color-primary-0;
   font-color: #ffffff;*/
@@ -21,6 +33,10 @@ nav {
 
 .card-image, .card-image img {
 	position: relative;
+}
+
+.well {
+  background-color:white;
 }
 
 .next-chat {
@@ -160,6 +176,9 @@ input.inputblur {
 .text {
   font-family:"Lucida Sans Unicode";
   font-size: 16pt;
+}
+#forum {
+  background-color: white;
 }
 
 .submit {
