@@ -100,9 +100,9 @@ nav {
   }
 
   .tftextinput{
-    margin: 0;
+    margin: 5px;
     font-family: "Lucida Sans Unicode";
-    font-size: 16pt !important;
+    font-size: 20pt !important;
     color: #ffffff;
   }
 
@@ -210,4 +210,18 @@ input.inputblur {
   text-transform: lowercase;
   padding: none;
   margin:none;
+
+}
+
+
+.optional {  
+  margin: 5px;
+    font-family: "Lucida Sans Unicode";
+    color: #ffffff;
+  font-size: 12pt !important;
+}
+
+.optionaltitles {
+  font-size: 18pt;
+
 }
