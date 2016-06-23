@@ -40,9 +40,12 @@ if (Meteor.isClient) {
       this.render('navbar',{
         to:"navbar"
       });
+            this.render('', {
+        to:"splash"
+      });
         this.render('chatwindow', {
         to: "chat"
-      })
+      });
 
     });
 
