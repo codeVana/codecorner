@@ -149,15 +149,7 @@
 </template>
 
 
-<!--forum page-->
-<template name="codecorner_forum">
-<div class= "container">
-<h1 class ="forum"> Post to the Forum!</h1>
-<p class="text"> Please post questions, comments, or anything you want! </p>
-</div>
 
-
-</template>
 
 
 
@@ -192,7 +184,8 @@
 <div style="clear:both"></div>
 </li>
 
-   <li id="post" class="collection-item avatar">
+
+   <li id="post" class="collection-item avatar"> 
      <!--i class="material-icons circle red">play_arrow</i-->
      <h2 class="postTitle">Description</h2>
      <p class="textarea"> Describe what your post is about here! For example, is it a community announcement? A snippet of code that you want to show the world? A tough project that you've figured out? A question you have? The possibilities are endless!</p>
@@ -370,6 +363,9 @@
         </div>
 </template>
 
+<!--forum page-->
+<template name="codecorner_forum">
+</template>
 <template name="rooms">
     <h1>Forums:</h1>
     <ul>
@@ -383,7 +379,7 @@
 
 <template name="input">
     <input type="text" id="msg" placeholder="Your message goes here..." style="width: 60%; margin-bottom: 0px">
-    <input type="button" value="Send message" class="btn btn-default ">
+    <input type="button" value="Send message" class="btn btn-default sendMsg">
 </template>
 
 <template name="messages">
@@ -403,6 +399,15 @@
 <template name="room">
     <li style="cursor: pointer; {{roomstyle}}">{{roomname}}</li>
 </template>
+
+
+
+
+
+
+
+
+
 
 <template name="welcomepost">
   <div class="container">

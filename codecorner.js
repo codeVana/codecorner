@@ -36,12 +36,15 @@ if (Meteor.isClient) {
       });
     });
 
+    Router.route('/forum',function(){
+      this.render('navbar',{
+        to:"navbar"
+      });
+        this.render('chatwindow', {
+        to: "chat"
+      });
 
-      Router.route('/forum',function(){
-    this.render('navbar',{to:"navbar"});
-    this.render('rooms', { to: "main" });
-
-  });
+    });
 
 
   	Router.route('/codecorner/chat', function () {
@@ -71,9 +74,8 @@ if (Meteor.isClient) {
           return Corner.findOne({_id:this.params._id});
         }
       });
-      this.render('chatwindow', {
-        to: "chat"
-      })
+
+
     });
 
   Template.codecornersplash.rendered = function() {
