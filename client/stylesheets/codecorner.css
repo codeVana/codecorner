@@ -11,6 +11,10 @@ nav {
   height: 100px;
 }
 
+.post {
+  background-color: color-primary-0;
+  font-color: #ffffff;
+}
 
 .card-image, .card-image img {
 	position: relative;
@@ -151,6 +155,47 @@ input.inputblur {
 .text {
   font-family:"Lucida Sans Unicode";
   font-size: 16pt;
+}
 
+.submit {
+  font-family:'Cookie';
+  font-size: 24pt;
+  float: right;
+  margin: 20pt;
+  -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+
+}
+
+.submit:hover {
+  color: #000000;
+}
+
+.container {
+  padding:10pt;
+
+}
+
+.postTitle {
+  font-family: "Cookie";
+  font-size:24pt;
+  margin-bottom: 5pt;
+}
+
+.textarea {
+  font-family: "Lucida Sans Unicode";
+  font-size: 12pt;
+  margin-bottom: 10pt;
+}
+
+.type{
+  margin-top: 8pt;
+      width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
 }
 

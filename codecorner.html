@@ -148,6 +148,7 @@
   </div>
 </template>
 
+
 <!--forum page-->
 <template name="codecorner_forum">
 <div class= "container">
@@ -159,6 +160,7 @@
 </template>
 
 
+
 <!--post page-->
 <template name="codecorner_item_details">
   <div class="container">
@@ -167,13 +169,20 @@
   </div>
 
 
-  <div style="width: 90%;">
-   <div style="float:left; width: 50%">
 
-   <form action="demo_form.asp">
-  First name: <input type="text" name="fname"><br>
-  Last name: <input type="text" name="lname"><br>
-  <input type="submit" value="Submit">
+
+ <ul class="container collection">
+   <li class="collection-item avatar">
+     <img src="../images/robot_logo.png" alt="robo-logo" class="circle">
+
+
+      <div style="width: 90%;">
+   <div class="post" style="float:left; width: 60%">
+
+   <form class="postTitle" action="demo_form.asp">
+  Title: <input type="text" name="title" class="text tftextinput"><br>
+  Categories: <input type="text" name="categories" class="text tftextinput"><br>
+  
 </form>
 
    </div>
@@ -182,6 +191,8 @@
    </div>
 </div>
 <div style="clear:both"></div>
+</li>
+
 
 
 
@@ -199,17 +210,36 @@
      <p> Code goes here
      </p>
      <a href="#!" class="secondary-content"><i class="material-icons"></i></a>
-   </li>
 
    <li class="collection-item avatar">
-     <i class="material-icons circle red">play_arrow</i>
-     <span class="title">Title</span>
-     <p> Video goes here
-     </p>
-     <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+     <!--i class="material-icons circle red">play_arrow</i-->
+     <h2 class="postTitle">Description</h2>
+     <p class="textarea"> Describe what your post is about here! For example, is it a community announcement? A snippet of code that you want to show the world? A tough project that you've figured out? A question you have? The possibilities are endless!</p>
+     <textarea placeholder="Type here..." name="description" class="type"></textarea>
+
    </li>
+
+   
+   <li class="collection-item avatar">
+     <!--i class="material-icons circle">folder</i-->
+     <h2 class="postTitle">Code</h2>
+     <p class="textarea">Insert code that is relevant to your post here! Feel free to add comments that explain it either here or in the description section above.</p>
+     <textarea placeholder="Type here..." name="code" class="type">Type here.</textarea>
+   </li>
+
  </ul>
+ <div class="container">
+
+
+ <input class="submit color-primary-3" type="submit" value="Publish!">
+  <a href="codecorner" class="submit color-primary-2"> cancel </a>
+ </div>
 </template>
+
+
+
+
+
 
 <template name="codecorner">
 <div class="row">
