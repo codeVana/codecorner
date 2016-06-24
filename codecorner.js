@@ -295,9 +295,8 @@ if (Meteor.isClient) {
 
    Template.postList.events({
 
-    'click .new-post': function(event, template) {
 
-    'submit .new-post': function(event, template) {
+    'click .new-post': function(event, template) {
 
         event.preventDefault();
 
