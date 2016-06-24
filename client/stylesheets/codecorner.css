@@ -11,7 +11,9 @@ nav {
   height: 100px;
 }
 
-
+#newtext {
+  font-family: 'Arial';
+}
 
 
 table {
@@ -179,6 +181,8 @@ input.inputblur {
 }
 #forum {
   background-color: white;
+  font-family:'Cookie';
+  font-size: 35pt;
 }
 
 .submit {
@@ -225,6 +229,15 @@ input.inputblur {
     color:black;
 }
 
+.row-fluid {
+  padding:0px;
+  max-height: 0px;
+  border-radius:0px;
+  border: 1px solid white;
+  box-shadow: none;
+  margin-bottom: none;
+
+}
 .btn {
   text-transform: lowercase;
   padding: none;

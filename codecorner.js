@@ -46,10 +46,7 @@ if (Meteor.isClient) {
       });
 
     });
-
-
-
-  	Router.route('/codecorner/chat', function () {
+  Router.route('/codecorner/chat', function () {
     	this.render('navbar', {
       	to:"navbar"
     	});
@@ -71,7 +68,14 @@ if (Meteor.isClient) {
   this.render('yourposts', { to: "main"});
 });
 
- 
+ Router.route('/question_page',function(){
+  this.render('navbar', {to:"navbar"});
+  this.render('question_page', {to:"main",
+        data:function(){
+          return Messages.findOne({_msg:this.params._msg});
+          }
+    });
+ });
 
 
     Router.route('/:_id', function () {
@@ -87,10 +91,6 @@ if (Meteor.isClient) {
           return Corner.findOne({_id:this.params._id});
           }
         });
-      this.render('room', {
-        to:"main",
-
-      });
 
   });
 
