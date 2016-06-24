@@ -257,3 +257,8 @@ input.inputblur {
   font-size: 18pt;
 
 }
+.info{
+  font-family: "Lucida Sans Unicode";
+  font-size:14pt;
+  padding: 5px;
+}

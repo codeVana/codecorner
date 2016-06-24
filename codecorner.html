@@ -1,7 +1,7 @@
 <head>
   <title>Code Corner</title>
   <link href='//fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
-  <!--link rel="shortcut icon" type="image/x-icon" href="../images/robot_logo.ico" /-->
+  <!--link rel="shortcut icon" type="image/x-icon" href="../images/robot_logo.ico"-->
 
 </head>
 
@@ -31,6 +31,7 @@
           {{#if currentUser}}
           <li><a href="/post" class="navbar">Post</a></li>
           <li><a href="/forum" class="navbar">Forum</a></li>
+          <li><a href="/yourposts" class="navbar">Your Posts</a></li>
           {{/if}}
       </ul>
     </div>
@@ -114,6 +115,7 @@
     {{/each}}
 </template>
 
+
 <!--template name="yourposts">
 {{#if currentUser== {{owner}}
   {{#each codecorners}}
@@ -121,6 +123,8 @@
     {{/each}} 
 {{/if}}
 </template-->
+
+
 
 <template name="codecorner_item">
   <div class="col s12 m12 main-cardlist">
@@ -409,6 +413,7 @@
 </template>
 
 
+
 <template name="forum_item_details">
   <div class = "container">
     {roomname}
@@ -438,17 +443,6 @@
     </div-->
 </template>
 
-
-
-
-
-
-
-
-
-
-
-
 <template name="welcomepost">
   <div class="container">
     <ul>
@@ -458,10 +452,6 @@
     </ul>
   </div>
 </template>
-
-
-
-
 
 <template name="codecorner_item_details">
 
@@ -474,7 +464,10 @@
       <div style="width: 90%">
         <div style="float:left">
           <h2 class="brand-font">{{{title}}}</h2>
-          <h2 class="postTitle">Categories: {{categories}}</h2>
+
+          <p class="info">Author: {{username}}</p>
+          <p class="info">Date Created: {{createdOn}}</p>
+          <p class="info">Categories: {{categories}}</p>
         </div>
         <div style="float:right;">
           <img src="{{ img }}" alt="picture" style="width:250px;height:250px;padding:10px">
@@ -494,7 +487,14 @@
      <h2 class="postTitle">Code</h2>
      <p class="textarea"> {{code}}</p>
    </li>
+{{#if currentUser}}
+<li><div class="container">
+      <button class="btn submit color-primary-0">edit</button>
+      <button class="btn submit color-primary-2">delete </button>
+    </div></li>
+    {{/if}}
 </ul>
+
  <div class="container">
     <h3 class="textarea"> Find more information at {{ url}}. </h3>
  </div>
