@@ -63,24 +63,28 @@ if (Meteor.isClient) {
     this.render('postList', { to: "main" });
   });
 
-
-/*Template.registerHelper('_', function(){
-  return _;
-});*/
-
  Router.route('yourposts', function(){
   this.render('navbar', { to:"navbar"});
-  this.render('codecorner', { to: "main"});
+  this.render('yourposts', { to: "main"});
 });
-
- Router.route('/question_page',function(){
-  this.render('navbar', {to:"navbar"});
-  this.render('question_page', {to:"main",
+ 
+    Router.route('/question', function () {
+      this.render('navbar', {
+        to:"navbar"
+      });
+      this.render('', {
+        to:"splash"
+      });
+      this.render('new_question', {
+        to:"main",
         data:function(){
           return Messages.findOne({_msg:this.params._msg});
           }
-    });
- });
+        });
+
+  }); 
+
+
 
 
     Router.route('/:_id', function () {
@@ -98,8 +102,9 @@ if (Meteor.isClient) {
         });
 
   });
+ 
 
-  Template.forum_item_details.rendered = function() {
+  Template.new_question.rendered = function() {
     $('.carousel').carousel();
   };
 
@@ -185,7 +190,7 @@ if (Meteor.isClient) {
   _sendMessage = function() {
     var el = document.getElementById("msg");
     Messages.insert({user: Meteor.user().username, msg: el.value, ts: new Date(), room: Session.get("roomname")});
-    el.value = "";
+   el.value = "";
     el.focus();
   };
 
@@ -393,7 +398,7 @@ if (Meteor.isServer) {
      		title:"Chick Tech",
      		url:"http://www.chicktech.org",
         img:"https://pbs.twimg.com/profile_images/2266463001/bntsgwxu124en7h8pmhz_400x400.jpeg",
-        categories:"Tech",
+        category:"Tech",
         code:"",
      		description:"ChickTech is dedicated to retaining women in the technology workforce and increasing the number of women and girls pursuing technology-based careers. Our Vision: We envision a safe, inclusive, and innovative technology future that includes equal pay, participation, and treatment of women. Our Mission: ChickTech is dedicated to retaining women in the technology workforce and increasing the number of women and girls pursuing technology-based careers. Activities: We facilitate hands-on technology-centric events to empower, support, and increase the confidence of women and girls.  Through our events, we build community, empower participants to see themselves as leaders, and provide networking and mentoring opportunities in the rapidly growing high tech industry.",
  				downscore: 0,upscore: 0,
@@ -404,7 +409,7 @@ if (Meteor.isServer) {
      		title:"Games for Girls",
      		url:"http://girlsmakegames.com",
         img:"https://fortunedotcom.files.wordpress.com/2015/07/alexa-cafe.jpg?quality=80&w=840&h=485&crop=1",
-        categories:"Art",
+        category:"Art",
         code:"",
      		description:"Girls Make Games is a series of international summer camps, workshops and game jams designed to inspire the next generation of designers, creators, and engineers.",
  				downscore: 0, upscore: 0,
@@ -415,7 +420,7 @@ if (Meteor.isServer) {
      		title:"Girl Start",
      		url:"http://www.girlstart.org",
         img:"http://www.girlstart.org/images/stories/gsPhotos/photo_1.jpg",
-        categories:"Science",
+        category:"Science",
         code:"",
      		description:"Girlstart's mission is to increase girls’ interest and engagement in STEM through innovative, nationally-recognized informal STEM education programs.",
  				upscore: 0,
@@ -427,7 +432,7 @@ if (Meteor.isServer) {
         title:"Apps for Girls",
         url:"http://www.appinventor.org",
         img:"http://c8.alamy.com/comp/CYXW7E/girls-at-a-technocamp-app-inventor-workshop-for-16-18-year-old-students-CYXW7E.jpg",
-        categories:"Tech",
+        category:"Tech",
         code:"",
         description: "AppInventor.org is a site for learning and teaching how to program mobile apps with MIT's App Inventor. These tutorials are refined versions of the tutorials that have been on the Google and MIT App Inventor sites from App Inventor's inception-- thousands of beginners have used them to learn programming and learn App Inventor.",
         upscore: 0,

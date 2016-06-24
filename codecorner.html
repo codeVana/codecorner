@@ -115,7 +115,6 @@
     {{/each}}
 </template>
 
-
 <!--template name="yourposts">
 {{#if currentUser== {{owner}}
   {{#each codecorners}}
@@ -377,29 +376,7 @@
                 {{> input}}
             </div>
 
-</div>
-</template>
-<template name="rooms" id = "forum">
-<!--div id="forum">
-    <table>
-    <tbody>
-    <tr >
-    <th style="padding-left:0 underline">Forums</th>
-    <th style="padding-right:20">Posts</th>
-    <th style="padding-right:0">Replies</th>
-    </tr>
-    <tr>
-    <td> 
-    {{#each rooms}}
-        {{> room}}
-    {{/each}}
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    <input type="text" id="newroom" placeholder="New Forum" style="width: 20%; margin-bottom: 0px">
-    <input type="button" value="Create it!" class="btn btn-default createRoom">
-    </div-->
+        </div>
 </template>
 
 <template name="room" id="forum">
@@ -426,8 +403,10 @@
     
 </template>
 
-<template name="question_page">
+<template name="new_question">
+<div>
 <p><strong> {{msg}}</strong> </p>
+</div>
 </template>
 
 <template name="message" id="forum">
