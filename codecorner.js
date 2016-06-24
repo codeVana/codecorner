@@ -284,8 +284,14 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.postList.events({
+    'click .new-post': function(e){
+      Meteor.call("addCorner",e.title,e.url,e.description,e.code);
+    }
+  })
+
    Template.postList.events({
-    'submit .new-post': function(event, template) {
+    'click .new-post': function(event, template) {
         event.preventDefault();
         var title = event.target.title.value;
         var description = $('.summernote').summernote('code');
