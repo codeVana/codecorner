@@ -69,10 +69,10 @@ if (Meteor.isClient) {
   return _;
 });*/
 
- Router.route('yourposts', function(){
+ /*Router.route('yourposts', function(){
   this.render('navbar', { to:"navbar"});
   this.render('codecorner', { to: "main"});
-});
+});*/
 
  
 
