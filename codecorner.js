@@ -37,17 +37,16 @@ if (Meteor.isClient) {
       });
     });
 
-    Router.route('/forum',function(){
+    Router.route('/forum',function(){ 
       this.render('navbar',{
         to:"navbar"
       });
       this.render('chatwindow', {
         to:"main"
       });
+
     });
-
-
-  	Router.route('/codecorner/chat', function () {
+  Router.route('/codecorner/chat', function () {
     	this.render('navbar', {
       	to:"navbar"
     	});
@@ -74,7 +73,14 @@ if (Meteor.isClient) {
   this.render('codecorner', { to: "main"});
 });*/
 
- 
+ Router.route('/question_page',function(){
+  this.render('navbar', {to:"navbar"});
+  this.render('question_page', {to:"main",
+        data:function(){
+          return Messages.findOne({_msg:this.params._msg});
+          }
+    });
+ });
 
 
     Router.route('/:_id', function () {
@@ -88,11 +94,14 @@ if (Meteor.isClient) {
         to:"main",
         data:function(){
           return Corner.findOne({_id:this.params._id});
-        }
-      });
+          }
+        });
 
+  });
 
-    });
+  Template.forum_item_details.rendered = function() {
+    $('.carousel').carousel();
+  };
 
   Template.codecornersplash.rendered = function() {
     $('.parallax').parallax();
@@ -155,7 +164,8 @@ if (Meteor.isClient) {
 
   Template.messages.events({
     'click .deleteRoom'(){
-      Rooms.remove(this._id);
+      var name = Session.get(roomname);
+      Rooms.remove(name);
     },
   });
 
@@ -300,8 +310,14 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.postList.events({
+    'click .new-post': function(e){
+      Meteor.call("addCorner",e.title,e.url,e.description,e.code);
+    }
+  })
+
    Template.postList.events({
-    'submit .new-post': function(event, template) {
+'submit .new-post': function(event, template) {
         event.preventDefault();
         var title = event.target.title.value;
         var url= event.target.url.value;
@@ -311,6 +327,7 @@ if (Meteor.isClient) {
         console.log("description")
         var code = document.getElementById("code").value;
        
+
         Corner.insert({
   			title:title,
    			url:url,
