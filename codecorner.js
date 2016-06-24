@@ -66,6 +66,12 @@ if (Meteor.isClient) {
     this.render('postList', { to: "main" });
   });
 
+ Router.route('yourposts', function(){
+  this.render('navbar', { to:"navbar"});
+  this.render('yourposts', { to: "main"});
+});
+
+ 
 
 
     Router.route('/:_id', function () {
@@ -310,6 +316,8 @@ if (Meteor.isClient) {
         event.preventDefault();
         var title = event.target.title.value;
         var url= event.target.url.value;
+        var categories=event.target.categories.value;
+        var img=event.target.img.value;
         var description = document.getElementById("description").value;
         console.log("description")
         var code = document.getElementById("code").value;
@@ -318,7 +326,8 @@ if (Meteor.isClient) {
         Corner.insert({
   			title:title,
    			url:url,
-        img:"../images/sunset.jpg",
+        img:img,
+        categories:categories,
 //        video:video,
   			description:description,
   			owner: Meteor.userId(),
@@ -476,9 +485,5 @@ if (Meteor.isServer) {
 
 
   });
-
-
-
-
 }
 

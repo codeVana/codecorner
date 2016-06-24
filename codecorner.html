@@ -1,7 +1,7 @@
 <head>
   <title>Code Corner</title>
   <link href='//fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
-  <link rel="shortcut icon" type="image/x-icon" href="../images/robot_logo.ico" />
+  <!--link rel="shortcut icon" type="image/x-icon" href="../images/robot_logo.ico" /-->
 
 </head>
 
@@ -114,6 +114,13 @@
     {{/each}}
 </template>
 
+<template name="yourposts">
+{{#if currentUser== {{owner}}
+  {{#each codecorners}}
+    {{>codecorner_item}}
+    {{/each}} 
+{{/if}}
+</template>
 
 <template name="codecorner_item">
   <div class="col s12 m12 main-cardlist">
@@ -440,15 +447,17 @@
 
 
 <template name="codecorner_item_details">
+
   <div class="container">
     {{Title}}
   </div>
+
 <ul id="post" class="container collection">
    <li id="post" class="collection-item avatar">
       <div style="width: 90%">
         <div style="float:left">
           <h2 class="brand-font">{{{title}}}</h2>
-          <h2 class="postTitle">Categories: {{category}}</h2>
+          <h2 class="postTitle">Categories: {{categories}}</h2>
         </div>
         <div style="float:right;">
           <img src="{{ img }}" alt="picture" style="width:250px;height:250px;padding:10px">
