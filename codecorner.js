@@ -8,9 +8,6 @@ var post_counter = 0;
 //Template.myAtSocial.replaces("loginButtons");
 if (Meteor.isClient) {
 
-
-
-
   Accounts.ui.config({
     passwordSignupFields: 'USERNAME_AND_EMAIL'
   });
@@ -73,14 +70,14 @@ if (Meteor.isClient) {
   this.render('codecorner', { to: "main"});
 });*/
 
- Router.route('/question_page',function(){
+ /*Router.route('/question_page',function(){
   this.render('navbar', {to:"navbar"});
   this.render('question_page', {to:"main",
         data:function(){
           return Messages.findOne({_msg:this.params._msg});
           }
     });
- });
+ });*/
 
 
     Router.route('/:_id', function () {
