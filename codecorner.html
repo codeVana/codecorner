@@ -1,7 +1,7 @@
 <head>
   <title>Code Corner</title>
   <link href='//fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
-  <!--link rel="shortcut icon" type="image/x-icon" href="../images/robot_logo.ico" /-->
+  <!--link rel="shortcut icon" type="image/x-icon" href="../images/robot_logo.ico"-->
 
 </head>
 
@@ -420,15 +420,6 @@
 </template>
 
 
-
-
-
-
-
-
-
-
-
 <template name="welcomepost">
   <div class="container">
     <ul>
@@ -438,10 +429,6 @@
     </ul>
   </div>
 </template>
-
-
-
-
 
 <template name="codecorner_item_details">
 
@@ -477,7 +464,14 @@
      <h2 class="postTitle">Code</h2>
      <p class="textarea"> {{code}}</p>
    </li>
+{{#if currentUser}}
+<li><div class="container">
+      <button class="btn submit color-primary-0">edit</button>
+      <button class="btn submit color-primary-2">delete </button>
+    </div></li>
+    {{/if}}
 </ul>
+
  <div class="container">
     <h3 class="textarea"> Find more information at {{ url}}. </h3>
  </div>
