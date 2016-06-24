@@ -369,11 +369,10 @@
     <tbody>
     <tr >
     <th style="padding-left:0" id="forum">Forums</th>
-    <th style="padding-right:20">Posts</th>
-    <th style="padding-right:0">Replies</th>
+
     </tr>
     <tr>
-    <td> 
+    <td > 
     {{#each rooms}}
         {{> room}}
     {{/each}}
@@ -388,7 +387,7 @@
 
 
 
-<template name="room" id="forum" >
+<template name="room" id="forum">
     <li style="cursor: pointer; {{roomstyle}}">{{roomname}}</li>
 </template>
 
@@ -413,7 +412,11 @@
 </template>
 
 
-
+<template name="forum_item_details">
+  <div class = "container">
+    {roomname}
+    </div>
+    </template>
 
 
 

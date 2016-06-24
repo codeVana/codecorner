@@ -37,14 +37,16 @@ if (Meteor.isClient) {
       });
     });
 
-    Router.route('/forum',function(){
+    Router.route('/forum',function(){ 
       this.render('navbar',{
         to:"navbar"
       });
       this.render('chatwindow', {
         to:"main"
       });
+
     });
+
 
 
   	Router.route('/codecorner/chat', function () {
@@ -77,11 +79,18 @@ if (Meteor.isClient) {
         to:"main",
         data:function(){
           return Corner.findOne({_id:this.params._id});
-        }
+          }
+        });
+      this.render('room', {
+        to:"main",
+
       });
 
+  });
 
-    });
+  Template.forum_item_details.rendered = function() {
+    $('.carousel').carousel();
+  };
 
   Template.codecornersplash.rendered = function() {
     $('.parallax').parallax();
@@ -144,7 +153,8 @@ if (Meteor.isClient) {
 
   Template.messages.events({
     'click .deleteRoom'(){
-      Rooms.remove(this._id);
+      var name = Session.get(roomname);
+      Rooms.remove(name);
     },
   });
 
