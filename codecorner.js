@@ -220,10 +220,11 @@ if (Meteor.isClient) {
   });
 
 
-  Template.roominput.events({
+ /* Template.roominput.events({
     'click .createRoom': function(e) {
        _createRoom();
-    },
+
+    }*/
 
 
     /*'keyup #room-name': function(e) {
@@ -231,8 +232,9 @@ if (Meteor.isClient) {
         _createRoom();
       }
     }
+       });
 */
-  });
+ 
 
   _createRoom = function() {
     var el = document.getElementById("room-name");
@@ -289,15 +291,13 @@ if (Meteor.isClient) {
 
    Template.postList.events({
     'submit .new-post': function(event, template) {
-      console.log("this worked");
         event.preventDefault();
-        console.log("prevent default");
         var title = event.target.title.value;
         var url= event.target.url.value;
         var description = document.getElementById("description").value;
         console.log("description")
         var code = document.getElementById("code").value;
-        console.log("at least this is working");
+       
         Corner.insert({
   			title:title,
    			url:url,
