@@ -115,7 +115,6 @@
     {{/each}}
 </template>
 
-
 <!--template name="yourposts">
 {{#if currentUser== {{owner}}
   {{#each codecorners}}
@@ -377,7 +376,8 @@
                 {{> input}}
             </div>
 
-</div>
+        </div>
+
 </template>
 
 <template name="room" id="forum">
@@ -404,9 +404,12 @@
     
 </template>
 
-<!--template name="question_page">
+
+<template name="new_question">
+<div>
 <p><strong> {{msg}}</strong> </p>
-</template-->
+</div>
+</template>
 
 <template name="message" id="forum">
     <p><strong></strong>{{user}}<span style="font-size: 0.7em; color: darkgray">({{timestamp}})</span>: <i>{{msg}}</i></p>
