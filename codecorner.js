@@ -267,12 +267,34 @@ Template.postEdit.events({
     }
   });
 
+  Template.new_question.events({
+    'click .answerQuestion': function(e) {
+      _answerQuestion();
+    },
+    'keyup #question': function(e) {
+      if (e.type == "keyup" && e.which == 13) {
+        _answerQuestion();
+      }
+    }
+  })
+
+  _answerQuestion = function(){
+    var answer = document.getElementById("answer");
+    answer.value="";
+    answer.focus();
+  }
+
 
   _sendMessage = function() {
     var el = document.getElementById("msg");
-    Messages.insert({user: Meteor.user().username, msg: el.value, ts: new Date(), room: Session.get("roomname")});
+    var eldetails = document.getElementById("msgdetails");
+    var date = new Date();
+    var answer = null;
+    Messages.insert({user: Meteor.user().username,msg: el.value,msgdetails: eldetails.value,answer:answer.value, ts: date.toDateString(), room: Session.get("roomname")});
    el.value = "";
+   eldetails.value="";
     el.focus();
+    eldetails.focus();
   };
 
   _createRoom = function() {

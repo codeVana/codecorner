@@ -366,6 +366,7 @@
 
                 {{> messages}}
 
+
             </div>
             <div class="span8 well">
                 {{> input}}
@@ -380,11 +381,14 @@
 </template>
 
 <template name="input" id = "forum">
-    <input type="text" id="msg" placeholder="Your message goes here..." style="width: 60%; margin-bottom: 0px">
-    <input type="button" value="Ask" class="btn btn-default sendMsg">
+    <input type="text" id="msg" placeholder="Your Question goes here..." style="width: 60%; margin-bottom: 0px">
+    <input type="text" id="msgdetails" placeholder="Your Question details go here..." style="width: 60%; margin-bottom: 10px ">
+
+    <input type="button" value="Ask" class="btn btn-default sendMsg" >
 </template>
 
 <template name="messages" id = "forum">
+
     <h4 style="padding-left:0" class = "contribute">Questions/Comments:</h4>
     <h1 class="textarea" id= "newtext">If you want someone to submit something that could help you on your project, or you have a question about someone's project, please submit it here! Your question is open to the public! </h1>
     <div id="messages" style="background-color: #ffffff; border: 1px solid darkgray; max-height: 200px; overflow: auto">
@@ -396,18 +400,45 @@
         {{/each}}
        
     </div>
+
     
 </template>
 
 
 <template name="new_question">
-<div>
-<p><strong> {{msg}}</strong> </p>
+<div class="container">
+<ul id="post" class="container collection">
+   <li id="post" class="collection-item avatar">
+      <div style="width: 90%">
+        <div style="float:left">
+          <h2 class="question-font"><strong>Question: {{{msg}}}</strong></h2>
+          <h3 class="question-font">Details: {{{msgdetails}}}</h3>
+
+          <p class="info">Asked By: {{user}}</p>
+          <p class="info">Date Created: {{ts}}</p>
+        </div>
+      </div>
+      <div style="clear:both"></div>
+  </li>
+
+   <li id="post" class="collection-item avatar">
+     <!--i class="material-icons circle">folder</i-->
+     <h2 class="postTitle">Have an answer? </h2>
+    <input type="text" id="answer" placeholder="Your Answer goes here..." style="width: 60%; margin-bottom: 10px ">
+    <input type="button" value="Answer!" class="btn btn-default answerQuestion" >
+     <div id="answers" >
+        {{#each answers}}
+          {{>answer}}
+        {{/each}}
+          </div>
+   </li>
+</ul>
 </div>
 </template>
 
+
 <template name="message" id="forum">
-    <p><strong></strong>{{user}}<span style="font-size: 0.7em; color: darkgray">({{timestamp}})</span>: <i>{{msg}}</i></p>
+    <p><strong></strong>{{user}}<span style="font-size: 0.7em; color: darkgray">({{timestamp}})</span>: <i><strong>{{msg}}</strong>...{{msgdetails}}</i> </p>
 </template>
 
 

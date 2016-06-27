@@ -58,6 +58,11 @@ table {
   font-size: 72pt;
 }
 
+.question-font {
+  font-family: 'Cookie', cursive;
+  font-size: 40pt;
+}
+
 #brand-logo {
   margin-top: 16px;
   margin-right: 120px;
@@ -180,7 +185,7 @@ input.inputblur {
   font-size: 16pt;
 }
 #forum {
-  background-color: white;
+  background-color: #1D3671;
   font-family:'Cookie';
   font-size: 35pt;
 }
@@ -193,6 +198,14 @@ input.inputblur {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
 
+}
+.sendMsg:hover{
+  color: #000000;
+  
+}
+.sendMsg{
+  float:right;
+  margin-right:200px;
 }
 
 .submit:hover {
