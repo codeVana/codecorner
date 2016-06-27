@@ -89,7 +89,6 @@ Corner.allow({
   }); 
 
 
-
     Router.route('/:_id', function () {
       this.render('navbar', {
         to:"navbar"
@@ -106,6 +105,21 @@ Corner.allow({
 
   });
  
+   Router.route('/:_id/edit', function () {
+      this.render('navbar', {
+        to:"navbar"
+      });
+      this.render('', {
+        to:"splash"
+      });
+      this.render('postEdit', {
+        to:"main",
+        data:function(){
+          return Corner.findOne({_id:this.params._id});
+          }
+        });
+
+  });
 
   Template.new_question.rendered = function() {
     $('.carousel').carousel();
@@ -126,6 +140,17 @@ Corner.allow({
 		}
 	});
 
+Template.codecorner_item_details.helpers({
+  ownPost: function() {
+    return this.owner == Meteor.userId();
+  },
+  domain: function() {
+    var a = document.createElement('a');
+    a.href = this.url;
+    return a.hostname;
+  }
+});
+
   Template.codecorner_item.helpers({
 		momentdate: function() {
 			var website_id = this._id;
@@ -139,13 +164,57 @@ Corner.allow({
 	// template events
 	/////
 
-  Template.codecorner_item_details.events({
+
+//postedit stuff
+Template.postEdit.events({
+  'submit form': function(e) {
+    e.preventDefault();
+
+    var currentPostId = this._id;
+    console.log("1");
+    var postProperties = {
+      url: $(e.target).find('[name=url]').val(),
+      title: e.target.title.value,
+      description: document.getElementById("description").value,
+      categories: event.target.categories.value,
+      img: event.target.img.value,
+      code: document.getElementById("code").value,
+    }
+    console.log(postProperties);
+
+    Corner.update(currentPostId, {$set: postProperties}, function(error) {
+       console.log("2");
+      if (error) {
+        // display the error to the user
+         console.log("3");
+        alert(error.reason);
+      } else {
+         console.log("4");
+        Router.go('/codecorner', {_id: currentPostId});
+      }
+    });
+    console.log("5");
+  },
+
+  'click .remove': function(e) {
+    e.preventDefault();
+
+    if (confirm("Are you sure you want to delete this post?")) {
+      var currentPostId = this._id;
+      Corner.remove(currentPostId);
+      Router.go('/codecorner');
+    }
+  }
+});
+
+
+  /*Template.codecorner_item_details.events({
 
   'click .remove': function () {
     Corner.remove(this._id);
      Router.go('/codecorner');
   }
-  });
+  });*/
 
 
 	Template.codecorner_item.events({
@@ -324,14 +393,15 @@ Corner.allow({
     },
     posts: function () {
       return Posts.find();
-    }
+    },
   });
 
-  Template.postList.events({
+  /*Template.postList.events({
     'click .new-post': function(e){
+        console.log("weird thing is called");
       Meteor.call("addCorner",e.title,e.url,e.description,e.code);
     }
-  })
+  })*/
 
    Template.postList.events({
 'submit .new-post': function(event, template) {
@@ -341,10 +411,8 @@ Corner.allow({
         var categories=event.target.categories.value;
         var img=event.target.img.value;
         var description = document.getElementById("description").value;
-        console.log("description")
         var code = document.getElementById("code").value;
        
-
         Corner.insert({
   			title:title,
    			url:url,
@@ -375,6 +443,7 @@ Corner.allow({
 if (Meteor.isServer) {
   Meteor.startup(function () {
     Meteor.methods({
+
   		addCorner: function(title, url, description, img, code) {
   			if (! Meteor.userId()) {
   	 		throw new Meteor.Error("not-authorized");
