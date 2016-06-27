@@ -68,8 +68,12 @@ Corner.allow({
 
 
  Router.route('yourposts', function(){
-  this.render('navbar', { to:"navbar"});
-  this.render('yourposts', { to: "main"});
+      this.render('navbar', {
+        to:"navbar"
+      });
+      this.render('yourposts', {
+        to:"main"
+      });
 });
  
     Router.route('/question', function () {
@@ -137,7 +141,11 @@ Corner.allow({
   Template.codecorner_list.helpers({
 		codecorners:function(){
 			return Corner.find({}, {sort: {upscore: -1}});
-		}
+		},
+     ownPost: function() {
+    return this.owner == Meteor.userId();
+  }
+
 	});
 
 Template.codecorner_item_details.helpers({
@@ -148,6 +156,15 @@ Template.codecorner_item_details.helpers({
     var a = document.createElement('a');
     a.href = this.url;
     return a.hostname;
+  }
+});
+
+Template.yourposts.helpers({
+    codecorners:function(){
+      return Corner.find({}, {sort: {upscore: -1}});
+    },
+     ownPost: function() {
+    return this.owner == Meteor.userId();
   }
 });
 

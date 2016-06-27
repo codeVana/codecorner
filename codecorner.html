@@ -31,7 +31,7 @@
           {{#if currentUser}}
           <li><a href="/post" class="navbar">Post</a></li>
           <li><a href="/forum" class="navbar">Forum</a></li>
-          <li><a href="/yourposts" class="navbar">Your Posts</a></li>
+          <li><a href="/yourposts" class="navbar">My Posts</a></li>
           {{/if}}
       </ul>
     </div>
@@ -109,18 +109,29 @@
   </div>
 </template>
 
+
+<template name="yourposts">
+<div class="container">
+    <h1 class="contribute">My Posts</h1>
+    <p class="text"> Here are all of the posts that you've authored. You can edit or delete these as you wish, but remember that once something is deleted, it's gone forever. </p>
+</div>
+
+<div class="container">
+    {{#each codecorners}}
+    {{#if ownPost}}
+    {{>codecorner_item}}
+     {{/if}}
+    {{/each}}
+</div>
+</template>
+
+
 <template name="codecorner_list">
+
     {{#each codecorners}}
     {{>codecorner_item}}
     {{/each}}
-</template>
-
-<template name="yourposts">
-
-    {{#each codecorners}}
-     {{>codecorner_item}}
-    {{/each}} 
-
+   
 </template>
 
 
@@ -130,8 +141,6 @@
     <div class="card small">
       <div class="card-image">
         <img src="{{img}}" />
-        <!--div class="next-chat {{#if nextChatEmpty }}not-available{{/if}}">Next ChickTECH chat session: {{nextChat}}</div-->
-        <!-- <span class="card-title">{{title}}</span> -->
       </div>
       <div class="card-content">
         <!-- <div class="category-title"><a href="/codecorner/{{_id}}">{{title}}</a> </div> -->
@@ -151,7 +160,7 @@
             </div>
         </div>
       </div>
-      <div class="card-action color-primary-3">
+      <div class="card-action">
         <a href="/{{_id}}">{{title}}</a>
       </div>
     </div>
