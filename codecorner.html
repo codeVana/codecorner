@@ -115,13 +115,13 @@
     {{/each}}
 </template>
 
-<!--template name="yourposts">
-{{#if currentUser== {{owner}}
-  {{#each codecorners}}
-    {{>codecorner_item}}
+<template name="yourposts">
+
+    {{#each codecorners}}
+     {{>codecorner_item}}
     {{/each}} 
-{{/if}}
-</template-->
+
+</template>
 
 
 
@@ -494,7 +494,7 @@
 {{#if currentUser}}
 <li><div class="container">
       <button class="btn submit color-primary-0">edit</button>
-      <button class="btn submit color-primary-2">delete </button>
+      <button id="remove" class="remove btn submit color-primary-2">remove </button>
     </div></li>
     {{/if}}
 </ul>

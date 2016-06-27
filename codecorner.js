@@ -8,6 +8,12 @@ var post_counter = 0;
 //Template.myAtSocial.replaces("loginButtons");
 if (Meteor.isClient) {
 
+Corner.allow({
+  insert: function () { return true; },
+  update: function () { return true; },
+  remove: function () { return true; }
+});
+
   Accounts.ui.config({
     passwordSignupFields: 'USERNAME_AND_EMAIL'
   });
@@ -89,8 +95,8 @@ if (Meteor.isClient) {
         to:"navbar"
       });
       this.render('', {
-      	to:"splash"
-    	});
+        to:"splash"
+      });
       this.render('codecorner_item_details', {
         to:"main",
         data:function(){
@@ -132,6 +138,15 @@ if (Meteor.isClient) {
 	/////
 	// template events
 	/////
+
+  Template.codecorner_item_details.events({
+
+  'click .remove': function () {
+    Corner.remove(this._id);
+     Router.go('/codecorner');
+  }
+  });
+
 
 	Template.codecorner_item.events({
 		"click .js-upvote":function(event){
