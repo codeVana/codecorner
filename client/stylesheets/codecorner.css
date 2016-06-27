@@ -35,6 +35,7 @@ table {
 
 .card-image, .card-image img {
 	position: relative;
+  color:white;
 }
 
 .well {
@@ -76,7 +77,9 @@ table {
 	margin-right: 1%;
 	margin-bottom: 20px;
   font-size: 16pt;
-  font-family: "Arial";
+  font-family: "Lucida Sans Unicode";
+  background-color: #1D3671;
+  color:white;
 }
 
 .login-link-text {
@@ -86,6 +89,7 @@ table {
 
 .main-cardlist .card.small .card-content {
 	padding: 12px;
+  color:white;
 }
 
 .score, .voting {
