@@ -413,6 +413,11 @@
     
 </template>
 
+<template name = "questions">
+<div class="span4 well">
+    {{> answers}}
+    </div>
+</template>
 
 <template name="new_question">
 <div class="container">
@@ -420,8 +425,8 @@
    <li id="post" class="collection-item avatar">
       <div style="width: 90%">
         <div style="float:left">
-          <h2 class="question-font"><strong>Question: {{{msg}}}</strong></h2>
-          <h3 class="question-font">Details: {{{msgdetails}}}</h3>
+          <h2 class="question-font"><strong>Question: {{msg}}</strong></h2>
+          <h3 class="question-font">Details: {{msgdetails}}</h3>
 
           <p class="info">Asked By: {{user}}</p>
           <p class="info">Date Created: {{ts}}</p>
@@ -429,20 +434,31 @@
       </div>
       <div style="clear:both"></div>
   </li>
+ 
+
+
 
    <li id="post" class="collection-item avatar">
      <!--i class="material-icons circle">folder</i-->
      <h2 class="postTitle">Have an answer? </h2>
-    <input type="text" id="answer" placeholder="Your Answer goes here..." style="width: 60%; margin-bottom: 10px ">
-    <input type="button" value="Answer!" class="btn btn-default answerQuestion" >
-     <div id="answers" >
-        {{#each answers}}
-          {{>answer}}
-        {{/each}}
-          </div>
-   </li>
-</ul>
-</div>
+
+<form>
+<textarea id="words" rows="10" cols="20" placeholder="Enter answer..."></textarea>
+<input type="button" id="this_button" onclick="getwords()" value="Answer!" /> <br>
+<p id="para"></p>
+</form>
+
+<script type="text/javascript">
+function getwords() {
+  text = words.value;
+  Answers.insert(document.getElementById("para").innerHTML += '<p>'+text)
+  document.getElementById("words").value = ""
+}
+</script>
+</li>
+ </ul>
+  </div>
+
 </template>
 
 

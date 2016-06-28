@@ -3,6 +3,7 @@ Messages = new Meteor.Collection("messages");
 Rooms = new Meteor.Collection("rooms");
 Corner = new Mongo.Collection("instructables");
 Posts = new Mongo.Collection("posts");
+Answers = new Mongo.Collection("answers");
 var post_counter = 0;
 
 //Template.myAtSocial.replaces("loginButtons");
@@ -13,11 +14,17 @@ Corner.allow({
   update: function () { return true; },
   remove: function () { return true; }
 });
+Answers.allow({
+  insert: function () { return true; },
+  update: function () { return true; },
+  remove: function () { return true; }
+});
 
   Accounts.ui.config({
     passwordSignupFields: 'USERNAME_AND_EMAIL'
   });
   Meteor.subscribe("corner");
+  Meteor.subscribe("answers");
   Router.configure({
     layoutTemplate: 'ApplicationLayout'
   	});
@@ -83,9 +90,13 @@ Corner.allow({
       this.render('', {
         to:"splash"
       });
+      this.render("answers",{
+        to:"main"
+      });
       this.render('new_question', {
         to:"main",
         data:function(){
+
           return Messages.findOne({_msg:this.params._msg});
           }
         });
@@ -303,13 +314,14 @@ Template.postEdit.events({
 
 
   _sendMessage = function() {
+    console.log("hello tanna");
     var el = document.getElementById("msg");
     var eldetails = document.getElementById("msgdetails");
     var date = new Date();
     var answer = null;
-    Messages.insert({user: Meteor.user().username,msg: el.value,msgdetails: eldetails.value,answer:answer.value, ts: date.toDateString(), room: Session.get("roomname")});
-   el.value = "";
-   eldetails.value="";
+    Messages.insert({user: Meteor.user().username,msg: el.value,msgdetails: eldetails.value, ts: date.toDateString(), room: Session.get("roomname")});
+    el.value = "";
+    eldetails.value="";
     el.focus();
     eldetails.focus();
   };

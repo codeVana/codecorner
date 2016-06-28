@@ -14,7 +14,15 @@ nav {
 #newtext {
   font-family: 'Arial';
 }
-
+#this_button {
+  color:black;
+  font-family: 'Cookie';
+  font-size: 12pt;
+}
+#words {
+  font-family: 'Cookie';
+  font-size: 16pt;
+}
 
 table {
   list-style-type: none;
